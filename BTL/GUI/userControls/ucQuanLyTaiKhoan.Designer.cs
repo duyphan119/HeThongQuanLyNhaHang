@@ -29,8 +29,8 @@ namespace BTL
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvEmployee = new System.Windows.Forms.DataGridView();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,8 +40,12 @@ namespace BTL
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.txtPhone = new System.Windows.Forms.TextBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.cbId = new System.Windows.Forms.ComboBox();
             this.dateTime = new System.Windows.Forms.DateTimePicker();
+            this.cbPosition = new System.Windows.Forms.ComboBox();
             this.rbtnFemale = new System.Windows.Forms.RadioButton();
             this.rbtnMale = new System.Windows.Forms.RadioButton();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
@@ -57,10 +61,6 @@ namespace BTL
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.cbPosition = new System.Windows.Forms.ComboBox();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.txtAddress = new System.Windows.Forms.TextBox();
-            this.txtPhone = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
             this.guna2GroupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -78,14 +78,14 @@ namespace BTL
             this.dgvEmployee.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvEmployee.BackgroundColor = System.Drawing.Color.White;
             this.dgvEmployee.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(198)))), ((int)(((byte)(254)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(198)))), ((int)(((byte)(254)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(198)))), ((int)(((byte)(254)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(198)))), ((int)(((byte)(254)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmployee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column4,
@@ -95,15 +95,15 @@ namespace BTL
             this.Column1,
             this.Column2,
             this.Column3});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(158)))), ((int)(((byte)(254)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEmployee.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(158)))), ((int)(((byte)(254)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEmployee.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvEmployee.EnableHeadersVisualStyles = false;
             this.dgvEmployee.GridColor = System.Drawing.Color.Black;
             this.dgvEmployee.Location = new System.Drawing.Point(13, 307);
@@ -215,6 +215,32 @@ namespace BTL
             this.guna2GroupBox1.TabIndex = 46;
             this.guna2GroupBox1.Text = "Thông Tin Nhân Viên";
             // 
+            // txtPhone
+            // 
+            this.txtPhone.Enabled = false;
+            this.txtPhone.Location = new System.Drawing.Point(404, 144);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(219, 30);
+            this.txtPhone.TabIndex = 24;
+            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Enabled = false;
+            this.txtAddress.Location = new System.Drawing.Point(404, 60);
+            this.txtAddress.Multiline = true;
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(219, 72);
+            this.txtAddress.TabIndex = 23;
+            // 
+            // txtName
+            // 
+            this.txtName.Enabled = false;
+            this.txtName.Location = new System.Drawing.Point(125, 102);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(160, 30);
+            this.txtName.TabIndex = 22;
+            // 
             // cbId
             // 
             this.cbId.Enabled = false;
@@ -240,6 +266,33 @@ namespace BTL
             this.dateTime.Size = new System.Drawing.Size(160, 30);
             this.dateTime.TabIndex = 20;
             this.dateTime.Value = new System.DateTime(2000, 12, 7, 19, 22, 0, 0);
+            // 
+            // cbPosition
+            // 
+            this.cbPosition.Enabled = false;
+            this.cbPosition.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbPosition.ForeColor = System.Drawing.Color.Black;
+            this.cbPosition.FormattingEnabled = true;
+            this.cbPosition.IntegralHeight = false;
+            this.cbPosition.ItemHeight = 23;
+            this.cbPosition.Items.AddRange(new object[] {
+            "Quản Lý",
+            "Bếp Trưởng",
+            "Kế Toán Trưởng",
+            "Thủ Kho",
+            "Bếp Phó",
+            "Nhân Viên Bếp",
+            "Nhân Viên Kế Toán",
+            "Nhân Viên Kho",
+            "Nhân Viên Phục Vụ",
+            "Nhân Viên Chạy Bàn",
+            "Nhân Viên Vệ Sinh",
+            "Lễ Tân",
+            "Bảo Vệ"});
+            this.cbPosition.Location = new System.Drawing.Point(404, 186);
+            this.cbPosition.Name = "cbPosition";
+            this.cbPosition.Size = new System.Drawing.Size(219, 31);
+            this.cbPosition.TabIndex = 19;
             // 
             // rbtnFemale
             // 
@@ -483,59 +536,6 @@ namespace BTL
             this.guna2TextBox1.Size = new System.Drawing.Size(325, 36);
             this.guna2TextBox1.TabIndex = 20;
             this.guna2TextBox1.TextChanged += new System.EventHandler(this.guna2TextBox1_TextChanged);
-            // 
-            // cbPosition
-            // 
-            this.cbPosition.Enabled = false;
-            this.cbPosition.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbPosition.ForeColor = System.Drawing.Color.Black;
-            this.cbPosition.FormattingEnabled = true;
-            this.cbPosition.IntegralHeight = false;
-            this.cbPosition.ItemHeight = 23;
-            this.cbPosition.Items.AddRange(new object[] {
-            "Quản Lý",
-            "Bếp Trưởng",
-            "Kế Toán Trưởng",
-            "Thủ Kho",
-            "Bếp Phó",
-            "Nhân Viên Bếp",
-            "Nhân Viên Kế Toán",
-            "Nhân Viên Kho",
-            "Nhân Viên Phục Vụ",
-            "Nhân Viên Chạy Bàn",
-            "Nhân Viên Vệ Sinh",
-            "Lễ Tân",
-            "Bảo Vệ"});
-            this.cbPosition.Location = new System.Drawing.Point(404, 186);
-            this.cbPosition.Name = "cbPosition";
-            this.cbPosition.Size = new System.Drawing.Size(219, 31);
-            this.cbPosition.TabIndex = 19;
-            // 
-            // txtName
-            // 
-            this.txtName.Enabled = false;
-            this.txtName.Location = new System.Drawing.Point(125, 102);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(160, 30);
-            this.txtName.TabIndex = 22;
-            // 
-            // txtAddress
-            // 
-            this.txtAddress.Enabled = false;
-            this.txtAddress.Location = new System.Drawing.Point(404, 60);
-            this.txtAddress.Multiline = true;
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(219, 72);
-            this.txtAddress.TabIndex = 23;
-            // 
-            // txtPhone
-            // 
-            this.txtPhone.Enabled = false;
-            this.txtPhone.Location = new System.Drawing.Point(404, 144);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(219, 30);
-            this.txtPhone.TabIndex = 24;
-            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
             // ucQuanLyTaiKhoan
             // 

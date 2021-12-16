@@ -28,7 +28,8 @@ namespace BTL
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            NhanVien nv = dao_nv.login("210015", "123456");
+            NhanVien nv = dao_nv.login(txtID.Text, txtPassword.Text);
+            
             if (nv != null)
             {
                 new F_TrangChu(this, nv).Visible = true;

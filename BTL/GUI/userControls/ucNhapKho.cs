@@ -88,22 +88,11 @@ namespace BTL
                     btnExport.Enabled = false;
                     phieu = new Phieu();
                 }
+                dgvProduct.Rows.Clear();
             }
             else
             {
                 MessageDialog.Show("Chọn nhà cung cấp trước khi tạo phiếu", "Lưu ý", MessageDialogButtons.OK, MessageDialogIcon.Error, MessageDialogStyle.Light);
-            }
-        }
-        //Chọn mã nguyên liệu
-        private void cbId_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(action == EDIT && cbId.SelectedIndex != -1)
-            {
-                int index = ds_nl.FindIndex(item => item.ma == ds_nl[cbId.SelectedIndex].ma);
-                if (index != -1)
-                {
-                    setData(ds_nl[index].ma);
-                }
             }
         }
 
@@ -185,7 +174,7 @@ namespace BTL
         private void btnSave_Click(object sender, EventArgs e)
         {
             NguyenLieu nl = getData();
-            int soluong = Convert.ToInt32(txtQuantity.Text);
+            int soluong = Convert.ToInt32(numQuantity.Value);
             if (nl != null && soluong > 0)
             {
                 ChiTietPhieu ctp = new ChiTietPhieu(nl, soluong);
@@ -236,10 +225,6 @@ namespace BTL
             cbSupplier.Enabled = true;
             btnExport.Enabled = false;
             dgvProduct.Rows.Clear();
-            /*phieu.list.ForEach(item =>
-            {
-                Console.WriteLine($"{item.nl.ten} - {item.soluong}");
-            });*/
             new Report(null).phieuNhap(phieu);
             phieu = new Phieu();
             action = "";
@@ -250,7 +235,7 @@ namespace BTL
         {
             cbId.Text = "";
             txtName.Text = txtUnit.Text = txtPrice.Text = "";
-            txtQuantity.Text = "0";
+            numQuantity.Value = 0;
         }
 
         public void setEnabled(bool status)
@@ -258,7 +243,7 @@ namespace BTL
             cbId.Enabled = status;
             txtName.Enabled = status;
             txtUnit.Enabled = status;
-            txtQuantity.Enabled = status;
+            numQuantity.Enabled = status;
             txtPrice.Enabled = status;
             btnSave.Enabled = status;
         }
@@ -267,7 +252,7 @@ namespace BTL
             NguyenLieu nl = dao_nl.getById(manl);
             txtName.Text = nl.ten;
             txtPrice.Text = nl.gia.ToString();
-            txtQuantity.Text = $"{dao_ctp.getQuantity(type, phieu.sophieu, manl)}";
+            numQuantity.Value = dao_ctp.getQuantity(type, phieu.sophieu, manl);
             txtUnit.Text = nl.dvt;
         }
 
@@ -276,9 +261,25 @@ namespace BTL
             new DSPhieu(this, null).phieu(true);
         }
 
-        private void cbSupplier_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void dgvProduct_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(cbSupplier.SelectedIndex != -1)
+            btnDelete.Enabled = true;
+        }
+        private void cbId_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (action == EDIT && cbId.SelectedIndex != -1)
+            {
+                int index = ds_nl.FindIndex(item => item.ma == ds_nl[cbId.SelectedIndex].ma);
+                if (index != -1)
+                {
+                    setData(ds_nl[index].ma);
+                }
+            }
+        }
+
+        private void cbSupplier_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbSupplier.SelectedIndex != -1)
             {
                 cbId.Items.Clear();
                 cbId.Enabled = !cbId.Enabled;
@@ -289,17 +290,6 @@ namespace BTL
                     cbId.Items.Add(nl.ma);
                 });
             }
-        }
-
-        private void dgvProduct_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            btnDelete.Enabled = true;
-        }
-
-        private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar)) e.Handled = true;
-            if (e.KeyChar == (char)8) e.Handled = false;
         }
     }
 }

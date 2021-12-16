@@ -19,8 +19,23 @@ namespace BTL
         {
             InitializeComponent();
             ban = b;
-            rjButton1.Text = $"Bàn {ban.soban}";
+            btnInfoTable.Text = $"Bàn {ban.soban}";
             preComponent = f;
+            if (ban.trangthai == true)
+            {
+                btnInfoTable.FillColor = Color.FromArgb(94, 148, 255);
+                btnInfoTable.ForeColor = Color.White;
+            }
+            else
+            {
+                btnInfoTable.FillColor = Color.LightCoral;
+                btnInfoTable.ForeColor = Color.White;
+            }
+        }
+
+        public int getID()
+        {
+            return ban.soban;
         }
         public ucBan()
         {
@@ -28,35 +43,25 @@ namespace BTL
         }
         private void ucBan_Load(object sender, EventArgs e)
         {
-             if(ban.trangthai == true)
-            {
-                rjButton1.FillColor = Color.FromArgb(94, 148, 255);
-                rjButton1.ForeColor = Color.White;
-            }
-            else
-            {
-                rjButton1.FillColor = Color.LightCoral;
-                rjButton1.ForeColor = Color.White;
-            }
+            
         }
 
-        public void sauKhiThanhToan(Ban bn)
+        public void order()
         {
-            if(ban.soban == bn.soban)
-            {
-                rjButton1.FillColor = Color.FromArgb(94, 148, 255);
-            }
+            btnInfoTable.FillColor = Color.LightCoral;
+            ban.trangthai = false;
         }
 
-        private void rjButton1_Click_1(object sender, EventArgs e)
+        public void discharge()
+        {
+            btnInfoTable.FillColor = Color.FromArgb(94, 148, 255);
+            ban.trangthai = true;
+        }
+
+        private void btnInfoTable_Click(object sender, EventArgs e)
         {
             //Xem thông tin
-            preComponent.xemThongTinBan(ban);
-        }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            preComponent.datMon(rjButton1, ban);
+            preComponent.xemThongTinBan(this, ban);
         }
     }
 }

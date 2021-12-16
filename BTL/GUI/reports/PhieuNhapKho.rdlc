@@ -56,6 +56,67 @@
     <ReportSection>
       <Body>
         <ReportItems>
+          <Textbox Name="Textbox1">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value xml:space="preserve">          </Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>NHÀ HÀNG HẢI SẢN K60</Value>
+                    <Style>
+                      <FontSize>14pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value xml:space="preserve">         </Value>
+                    <Style>
+                      <FontSize>14pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>444 Lê Văn Việt, Phường Tăng Nhơn Phú A, Thành phố Thủ Đức, Thành phố Hồ Chí Minh</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>           ĐT: 056.929.3181</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Height>0.7in</Height>
+            <Width>6.84667in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
           <Textbox Name="Textbox3">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
@@ -122,9 +183,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>0.76944in</Top>
+            <Top>0.72848in</Top>
+            <Left>0.23334in</Left>
             <Height>0.69167in</Height>
-            <Width>8.73833in</Width>
+            <Width>6.61333in</Width>
+            <ZIndex>1</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -180,10 +243,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox4</rd:DefaultName>
-            <Top>1.46111in</Top>
+            <Top>1.42015in</Top>
+            <Left>0.23334in</Left>
             <Height>0.53333in</Height>
-            <Width>8.39167in</Width>
-            <ZIndex>1</ZIndex>
+            <Width>6.61333in</Width>
+            <ZIndex>2</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -198,25 +262,25 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.43054in</Width>
+                  <Width>0.32602in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.3364in</Width>
+                  <Width>2.23188in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.6639in</Width>
+                  <Width>0.55938in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.13917in</Width>
+                  <Width>0.55131in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.7525in</Width>
+                  <Width>0.48964in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.17751in</Width>
+                  <Width>1.07299in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.48665in</Width>
+                  <Width>1.38213in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -796,11 +860,11 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>NhapKho_DataSet</DataSetName>
-            <Top>2.16111in</Top>
-            <Left>0.405in</Left>
+            <Top>2.09237in</Top>
+            <Left>0.23334in</Left>
             <Height>1.16666in</Height>
-            <Width>7.98667in</Width>
-            <ZIndex>2</ZIndex>
+            <Width>6.61333in</Width>
+            <ZIndex>3</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -837,11 +901,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox59</rd:DefaultName>
-            <Top>4.37083in</Top>
-            <Left>0.405in</Left>
+            <Top>4.32986in</Top>
+            <Left>0.23334in</Left>
             <Height>0.58333in</Height>
-            <Width>1.56667in</Width>
-            <ZIndex>3</ZIndex>
+            <Width>1.39167in</Width>
+            <ZIndex>4</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -882,11 +946,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox59</rd:DefaultName>
-            <Top>4.37083in</Top>
-            <Left>2.26917in</Left>
+            <Top>4.32986in</Top>
+            <Left>1.78116in</Left>
             <Height>0.58333in</Height>
-            <Width>1.56667in</Width>
-            <ZIndex>4</ZIndex>
+            <Width>1.5in</Width>
+            <ZIndex>5</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -927,11 +991,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox59</rd:DefaultName>
-            <Top>4.37083in</Top>
-            <Left>4.16084in</Left>
+            <Top>4.32986in</Top>
+            <Left>3.3506in</Left>
             <Height>0.58333in</Height>
-            <Width>1.56667in</Width>
-            <ZIndex>5</ZIndex>
+            <Width>1.29109in</Width>
+            <ZIndex>6</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -994,11 +1058,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox59</rd:DefaultName>
-            <Top>4.37083in</Top>
-            <Left>6.07501in</Left>
+            <Top>4.32986in</Top>
+            <Left>4.75499in</Left>
             <Height>0.58333in</Height>
-            <Width>2.25834in</Width>
-            <ZIndex>6</ZIndex>
+            <Width>2.09167in</Width>
+            <ZIndex>7</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1046,11 +1110,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox67</rd:DefaultName>
-            <Top>4.01333in</Top>
-            <Left>2.26917in</Left>
+            <Top>3.91681in</Top>
+            <Left>0.78249in</Left>
             <Height>0.34361in</Height>
             <Width>6.06418in</Width>
-            <ZIndex>7</ZIndex>
+            <ZIndex>8</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1090,10 +1154,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox4</rd:DefaultName>
-            <Top>3.32777in</Top>
+            <Top>3.28681in</Top>
+            <Left>0.23334in</Left>
             <Height>0.53333in</Height>
-            <Width>8.39167in</Width>
-            <ZIndex>8</ZIndex>
+            <Width>6.61333in</Width>
+            <ZIndex>9</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1105,73 +1170,11 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox1">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value xml:space="preserve">          </Value>
-                    <Style>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                  <TextRun>
-                    <Value>NHÀ HÀNG HẢI SẢN K60</Value>
-                    <Style>
-                      <FontSize>14pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value xml:space="preserve">         </Value>
-                    <Style>
-                      <FontSize>14pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                  <TextRun>
-                    <Value>444 Lê Văn Việt, Phường Tăng Nhơn Phú A, Thành phố Thủ Đức, Thành phố Hồ Chí Minh</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>           ĐT: 056.929.3181</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Height>0.7in</Height>
-            <Width>8.73833in</Width>
-            <ZIndex>9</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
         </ReportItems>
         <Height>5.14167in</Height>
         <Style />
       </Body>
-      <Width>8.73834in</Width>
+      <Width>7.13834in</Width>
       <Page>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>

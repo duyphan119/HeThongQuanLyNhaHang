@@ -96,6 +96,17 @@ namespace BTL.DAO
             return result;
         }
 
+        public void updateOne(HoaDon hd)
+        {
+            cnn.Open();
+            SqlCommand scm = new SqlCommand(
+              $@"update hoadon set giovao = '{hd.giovao}', giora = '{hd.giora}', manv = '{hd.nv.ma}', 
+                soban = {hd.ban.soban} where sohd = '{hd.sohd}'"  
+                , cnn);
+            scm.ExecuteNonQuery();
+            cnn.Close();
+        }
+
         public decimal getTotalPriceAll()
         {
             decimal result = 0;

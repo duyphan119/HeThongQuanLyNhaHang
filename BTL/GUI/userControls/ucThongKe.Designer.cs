@@ -29,9 +29,6 @@ namespace BTL
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -46,13 +43,12 @@ namespace BTL
             this.label14 = new System.Windows.Forms.Label();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cbFilter = new Guna.UI2.WinForms.Guna2ComboBox();
             this.dateTimeFilter = new MetroFramework.Controls.MetroDateTime();
-            this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
             this.dgvOrder = new System.Windows.Forms.DataGridView();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,6 +57,10 @@ namespace BTL
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dateTimeStart2 = new MetroFramework.Controls.MetroDateTime();
+            this.dateTimeEnd2 = new MetroFramework.Controls.MetroDateTime();
+            this.label5 = new System.Windows.Forms.Label();
             this.dgvFood = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,19 +68,15 @@ namespace BTL
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dateTimeStart2 = new MetroFramework.Controls.MetroDateTime();
-            this.dateTimeEnd2 = new MetroFramework.Controls.MetroDateTime();
-            this.label5 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.rpvStatistics = new Microsoft.Reporting.WinForms.ReportViewer();
             this.guna2GroupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrder)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFood)).BeginInit();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // dateTimeEnd1
@@ -218,7 +214,7 @@ namespace BTL
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -227,27 +223,13 @@ namespace BTL
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1032, 434);
             this.tabControl1.TabIndex = 123;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.cbFilter);
-            this.tabPage1.Controls.Add(this.dateTimeFilter);
-            this.tabPage1.Controls.Add(this.chart);
-            this.tabPage1.Location = new System.Drawing.Point(4, 32);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1024, 398);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Thống Kê Doanh Thu";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabControl1.Visible = false;
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(355, 8);
+            this.label3.Location = new System.Drawing.Point(360, 6);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(135, 36);
@@ -259,7 +241,7 @@ namespace BTL
             // 
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(4, 8);
+            this.label2.Location = new System.Drawing.Point(9, 6);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(135, 36);
@@ -286,7 +268,7 @@ namespace BTL
             "Các Quý Trong Năm",
             "3 Năm Gần Đây"});
             this.cbFilter.ItemsAppearance.Parent = this.cbFilter;
-            this.cbFilter.Location = new System.Drawing.Point(497, 8);
+            this.cbFilter.Location = new System.Drawing.Point(502, 6);
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.ShadowDecoration.Parent = this.cbFilter;
             this.cbFilter.Size = new System.Drawing.Size(233, 36);
@@ -302,7 +284,7 @@ namespace BTL
             this.dateTimeFilter.DisplayFocus = true;
             this.dateTimeFilter.FontSize = MetroFramework.MetroDateTimeSize.Tall;
             this.dateTimeFilter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimeFilter.Location = new System.Drawing.Point(147, 8);
+            this.dateTimeFilter.Location = new System.Drawing.Point(152, 6);
             this.dateTimeFilter.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimeFilter.MinimumSize = new System.Drawing.Size(0, 35);
             this.dateTimeFilter.Name = "dateTimeFilter";
@@ -313,26 +295,6 @@ namespace BTL
             this.dateTimeFilter.UseCustomForeColor = true;
             this.dateTimeFilter.UseStyleColors = true;
             this.dateTimeFilter.ValueChanged += new System.EventHandler(this.dateTimeFilter_ValueChanged);
-            // 
-            // chart
-            // 
-            this.chart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart.Legends.Add(legend1);
-            this.chart.Location = new System.Drawing.Point(3, 53);
-            this.chart.Name = "chart";
-            series1.ChartArea = "ChartArea1";
-            series1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series1.Legend = "Legend1";
-            series1.Name = "Doanh thu";
-            this.chart.Series.Add(series1);
-            this.chart.Size = new System.Drawing.Size(1018, 342);
-            this.chart.TabIndex = 126;
-            this.chart.Text = "chart1";
             // 
             // tabPage2
             // 
@@ -348,6 +310,16 @@ namespace BTL
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Thống Kê Hoá Đơn";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(7, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 35);
+            this.label1.TabIndex = 124;
+            this.label1.Text = "Từ";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dgvOrder
             // 
@@ -464,6 +436,67 @@ namespace BTL
             this.tabPage3.Text = "Thống Kê Thực Đơn";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(8, 8);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(33, 35);
+            this.label4.TabIndex = 128;
+            this.label4.Text = "Từ";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // dateTimeStart2
+            // 
+            this.dateTimeStart2.CalendarMonthBackground = System.Drawing.Color.OrangeRed;
+            this.dateTimeStart2.CalendarTitleBackColor = System.Drawing.Color.OrangeRed;
+            this.dateTimeStart2.CalendarTitleForeColor = System.Drawing.Color.Black;
+            this.dateTimeStart2.CalendarTrailingForeColor = System.Drawing.Color.Black;
+            this.dateTimeStart2.DisplayFocus = true;
+            this.dateTimeStart2.FontSize = MetroFramework.MetroDateTimeSize.Tall;
+            this.dateTimeStart2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimeStart2.Location = new System.Drawing.Point(48, 9);
+            this.dateTimeStart2.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimeStart2.MinimumSize = new System.Drawing.Size(0, 35);
+            this.dateTimeStart2.Name = "dateTimeStart2";
+            this.dateTimeStart2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dateTimeStart2.Size = new System.Drawing.Size(200, 35);
+            this.dateTimeStart2.TabIndex = 125;
+            this.dateTimeStart2.UseCustomBackColor = true;
+            this.dateTimeStart2.UseCustomForeColor = true;
+            this.dateTimeStart2.UseStyleColors = true;
+            this.dateTimeStart2.ValueChanged += new System.EventHandler(this.dateTimeStart2_ValueChanged);
+            // 
+            // dateTimeEnd2
+            // 
+            this.dateTimeEnd2.CalendarMonthBackground = System.Drawing.Color.OrangeRed;
+            this.dateTimeEnd2.CalendarTitleBackColor = System.Drawing.Color.OrangeRed;
+            this.dateTimeEnd2.CalendarTitleForeColor = System.Drawing.Color.Black;
+            this.dateTimeEnd2.CalendarTrailingForeColor = System.Drawing.Color.Black;
+            this.dateTimeEnd2.DisplayFocus = true;
+            this.dateTimeEnd2.FontSize = MetroFramework.MetroDateTimeSize.Tall;
+            this.dateTimeEnd2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimeEnd2.Location = new System.Drawing.Point(307, 8);
+            this.dateTimeEnd2.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimeEnd2.MinimumSize = new System.Drawing.Size(0, 35);
+            this.dateTimeEnd2.Name = "dateTimeEnd2";
+            this.dateTimeEnd2.Size = new System.Drawing.Size(200, 35);
+            this.dateTimeEnd2.TabIndex = 126;
+            this.dateTimeEnd2.UseCustomBackColor = true;
+            this.dateTimeEnd2.UseCustomForeColor = true;
+            this.dateTimeEnd2.UseStyleColors = true;
+            this.dateTimeEnd2.ValueChanged += new System.EventHandler(this.dateTimeEnd2_ValueChanged);
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(255, 8);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(45, 35);
+            this.label5.TabIndex = 127;
+            this.label5.Text = "Đến";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // dgvFood
             // 
             this.dgvFood.AllowUserToAddRows = false;
@@ -564,76 +597,32 @@ namespace BTL
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
             // 
-            // label1
+            // tabPage4
             // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(7, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 35);
-            this.label1.TabIndex = 124;
-            this.label1.Text = "Từ";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tabPage4.Controls.Add(this.label3);
+            this.tabPage4.Controls.Add(this.rpvStatistics);
+            this.tabPage4.Controls.Add(this.cbFilter);
+            this.tabPage4.Controls.Add(this.label2);
+            this.tabPage4.Controls.Add(this.dateTimeFilter);
+            this.tabPage4.Location = new System.Drawing.Point(4, 32);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1024, 398);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Biểu đồ doanh thu";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // rpvStatistics
             // 
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(8, 8);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(33, 35);
-            this.label4.TabIndex = 128;
-            this.label4.Text = "Từ";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // dateTimeStart2
-            // 
-            this.dateTimeStart2.CalendarMonthBackground = System.Drawing.Color.OrangeRed;
-            this.dateTimeStart2.CalendarTitleBackColor = System.Drawing.Color.OrangeRed;
-            this.dateTimeStart2.CalendarTitleForeColor = System.Drawing.Color.Black;
-            this.dateTimeStart2.CalendarTrailingForeColor = System.Drawing.Color.Black;
-            this.dateTimeStart2.DisplayFocus = true;
-            this.dateTimeStart2.FontSize = MetroFramework.MetroDateTimeSize.Tall;
-            this.dateTimeStart2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimeStart2.Location = new System.Drawing.Point(48, 9);
-            this.dateTimeStart2.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimeStart2.MinimumSize = new System.Drawing.Size(0, 35);
-            this.dateTimeStart2.Name = "dateTimeStart2";
-            this.dateTimeStart2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dateTimeStart2.Size = new System.Drawing.Size(200, 35);
-            this.dateTimeStart2.TabIndex = 125;
-            this.dateTimeStart2.UseCustomBackColor = true;
-            this.dateTimeStart2.UseCustomForeColor = true;
-            this.dateTimeStart2.UseStyleColors = true;
-            this.dateTimeStart2.ValueChanged += new System.EventHandler(this.dateTimeStart2_ValueChanged);
-            // 
-            // dateTimeEnd2
-            // 
-            this.dateTimeEnd2.CalendarMonthBackground = System.Drawing.Color.OrangeRed;
-            this.dateTimeEnd2.CalendarTitleBackColor = System.Drawing.Color.OrangeRed;
-            this.dateTimeEnd2.CalendarTitleForeColor = System.Drawing.Color.Black;
-            this.dateTimeEnd2.CalendarTrailingForeColor = System.Drawing.Color.Black;
-            this.dateTimeEnd2.DisplayFocus = true;
-            this.dateTimeEnd2.FontSize = MetroFramework.MetroDateTimeSize.Tall;
-            this.dateTimeEnd2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimeEnd2.Location = new System.Drawing.Point(307, 8);
-            this.dateTimeEnd2.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimeEnd2.MinimumSize = new System.Drawing.Size(0, 35);
-            this.dateTimeEnd2.Name = "dateTimeEnd2";
-            this.dateTimeEnd2.Size = new System.Drawing.Size(200, 35);
-            this.dateTimeEnd2.TabIndex = 126;
-            this.dateTimeEnd2.UseCustomBackColor = true;
-            this.dateTimeEnd2.UseCustomForeColor = true;
-            this.dateTimeEnd2.UseStyleColors = true;
-            this.dateTimeEnd2.ValueChanged += new System.EventHandler(this.dateTimeEnd2_ValueChanged);
-            // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(255, 8);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(45, 35);
-            this.label5.TabIndex = 127;
-            this.label5.Text = "Đến";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rpvStatistics.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rpvStatistics.Location = new System.Drawing.Point(0, 48);
+            this.rpvStatistics.Name = "rpvStatistics";
+            this.rpvStatistics.ServerReport.BearerToken = null;
+            this.rpvStatistics.Size = new System.Drawing.Size(1024, 350);
+            this.rpvStatistics.TabIndex = 0;
+            this.rpvStatistics.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.FullPage;
             // 
             // ucThongKe
             // 
@@ -646,12 +635,11 @@ namespace BTL
             this.Load += new System.EventHandler(this.ucThongKe_Load);
             this.guna2GroupBox1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrder)).EndInit();
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFood)).EndInit();
+            this.tabPage4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -685,15 +673,15 @@ namespace BTL
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2ComboBox cbFilter;
         private MetroFramework.Controls.MetroDateTime dateTimeFilter;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart;
         private System.Windows.Forms.Label label4;
         private MetroFramework.Controls.MetroDateTime dateTimeStart2;
         private MetroFramework.Controls.MetroDateTime dateTimeEnd2;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TabPage tabPage4;
+        private Microsoft.Reporting.WinForms.ReportViewer rpvStatistics;
     }
 }

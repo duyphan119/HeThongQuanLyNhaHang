@@ -46,14 +46,17 @@ namespace BTL
                     else
                     {
                         HoaDon hd = dao_b.getInvoice(ban.soban);
-                        if (hd.ds_mon.Count == 0)
+                        if(hd != null)
                         {
-                            dao_hd.deleteOne(hd.sohd);
-                            dao_b.updateOne(ban);
-                        }
-                        else
-                        {
-                            dao_hd.discharge(hd.sohd, DateTime.Now);
+                            if (hd.ds_mon.Count == 0)
+                            {
+                                dao_hd.deleteOne(hd.sohd);
+                                dao_b.updateOne(ban);
+                            }
+                            else
+                            {
+                                dao_hd.discharge(hd.sohd, DateTime.Now);
+                            }
                         }
                     }
                     int index = ds_ban.FindIndex(item => item.soban == ban.soban);
@@ -166,12 +169,34 @@ namespace BTL
             if(cbSearch.SelectedIndex != -1)
             {
                 dgvTable.Rows.Clear();
-                dao_b.searchByStatus(cbSearch.SelectedIndex).ForEach(ban =>
+                cbId.Items.Clear();
+                if (cbSearch.SelectedIndex == 2)
                 {
-                    cbId.Items.Add(ban.soban);
-                    ds_ban.Add(ban);
-                    addToDGV(ban);
-                });
+                    dao_b.getAll().ForEach(ban =>
+                    {
+                        cbId.Items.Add(ban.soban);
+                        ds_ban.Add(ban);
+                        addToDGV(ban);
+                    });
+                }
+                else
+                {
+                    bool status = false;
+                    if (cbSearch.SelectedIndex == 0)
+                    {
+                        status = true;
+                    }
+                    else if (cbSearch.SelectedIndex == 1)
+                    {
+                        status = false;
+                    }
+                    dao_b.searchByStatus(status).ForEach(ban =>
+                    {
+                        cbId.Items.Add(ban.soban);
+                        ds_ban.Add(ban);
+                        addToDGV(ban);
+                    });
+                }
                 dgvTable.ClearSelection();
             }
         }

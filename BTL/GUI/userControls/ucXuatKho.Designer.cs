@@ -39,13 +39,13 @@ namespace BTL
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvProduct = new System.Windows.Forms.DataGridView();
             this.groupDetail = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.txtInventory = new System.Windows.Forms.TextBox();
+            this.txtUnit = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.cbSupplier = new System.Windows.Forms.ComboBox();
+            this.cbId = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
@@ -55,16 +55,17 @@ namespace BTL
             this.btnExport = new Guna.UI2.WinForms.Guna2Button();
             this.btnOpen = new Guna.UI2.WinForms.Guna2Button();
             this.btnCreate = new Guna.UI2.WinForms.Guna2Button();
-            this.cbId = new System.Windows.Forms.ComboBox();
-            this.cbSupplier = new System.Windows.Forms.ComboBox();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.txtUnit = new System.Windows.Forms.TextBox();
-            this.txtInventory = new System.Windows.Forms.TextBox();
-            this.txtQuantity = new System.Windows.Forms.TextBox();
             this.txtPrice = new System.Windows.Forms.TextBox();
+            this.numQuantity = new System.Windows.Forms.NumericUpDown();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             this.groupDetail.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numQuantity)).BeginInit();
             this.SuspendLayout();
             // 
             // label9
@@ -157,41 +158,6 @@ namespace BTL
             this.label1.Text = "Mã Nguyên Liệu";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Giá Tiền";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Số Lượng";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Đơn Vị Tính";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Tên Nguyên Liệu";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Mã Nguyên Liệu";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
             // dgvProduct
             // 
             this.dgvProduct.AllowUserToAddRows = false;
@@ -255,8 +221,8 @@ namespace BTL
             // 
             this.groupDetail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupDetail.Controls.Add(this.numQuantity);
             this.groupDetail.Controls.Add(this.txtPrice);
-            this.groupDetail.Controls.Add(this.txtQuantity);
             this.groupDetail.Controls.Add(this.txtInventory);
             this.groupDetail.Controls.Add(this.txtUnit);
             this.groupDetail.Controls.Add(this.txtName);
@@ -283,6 +249,50 @@ namespace BTL
             this.groupDetail.Size = new System.Drawing.Size(980, 192);
             this.groupDetail.TabIndex = 20;
             this.groupDetail.Text = "Chi Tiết Phiếu Xuất";
+            // 
+            // txtInventory
+            // 
+            this.txtInventory.Enabled = false;
+            this.txtInventory.Location = new System.Drawing.Point(644, 93);
+            this.txtInventory.Name = "txtInventory";
+            this.txtInventory.Size = new System.Drawing.Size(87, 30);
+            this.txtInventory.TabIndex = 36;
+            // 
+            // txtUnit
+            // 
+            this.txtUnit.Enabled = false;
+            this.txtUnit.Location = new System.Drawing.Point(449, 93);
+            this.txtUnit.Name = "txtUnit";
+            this.txtUnit.Size = new System.Drawing.Size(103, 30);
+            this.txtUnit.TabIndex = 35;
+            // 
+            // txtName
+            // 
+            this.txtName.Enabled = false;
+            this.txtName.Location = new System.Drawing.Point(574, 51);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(176, 30);
+            this.txtName.TabIndex = 34;
+            // 
+            // cbSupplier
+            // 
+            this.cbSupplier.FormattingEnabled = true;
+            this.cbSupplier.IntegralHeight = false;
+            this.cbSupplier.Location = new System.Drawing.Point(161, 51);
+            this.cbSupplier.Name = "cbSupplier";
+            this.cbSupplier.Size = new System.Drawing.Size(252, 31);
+            this.cbSupplier.TabIndex = 33;
+            this.cbSupplier.SelectedIndexChanged += new System.EventHandler(this.cbSupplier_SelectedIndexChanged);
+            // 
+            // cbId
+            // 
+            this.cbId.FormattingEnabled = true;
+            this.cbId.IntegralHeight = false;
+            this.cbId.Location = new System.Drawing.Point(161, 93);
+            this.cbId.Name = "cbId";
+            this.cbId.Size = new System.Drawing.Size(165, 31);
+            this.cbId.TabIndex = 32;
+            this.cbId.SelectedIndexChanged += new System.EventHandler(this.cbId_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -491,58 +501,6 @@ namespace BTL
             this.btnCreate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
-            // cbId
-            // 
-            this.cbId.FormattingEnabled = true;
-            this.cbId.IntegralHeight = false;
-            this.cbId.Location = new System.Drawing.Point(161, 93);
-            this.cbId.Name = "cbId";
-            this.cbId.Size = new System.Drawing.Size(165, 31);
-            this.cbId.TabIndex = 32;
-            this.cbId.SelectedIndexChanged += new System.EventHandler(this.cbId_SelectedIndexChanged);
-            // 
-            // cbSupplier
-            // 
-            this.cbSupplier.FormattingEnabled = true;
-            this.cbSupplier.IntegralHeight = false;
-            this.cbSupplier.Location = new System.Drawing.Point(161, 51);
-            this.cbSupplier.Name = "cbSupplier";
-            this.cbSupplier.Size = new System.Drawing.Size(252, 31);
-            this.cbSupplier.TabIndex = 33;
-            this.cbSupplier.SelectedIndexChanged += new System.EventHandler(this.cbSupplier_SelectedIndexChanged);
-            // 
-            // txtName
-            // 
-            this.txtName.Enabled = false;
-            this.txtName.Location = new System.Drawing.Point(574, 51);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(176, 30);
-            this.txtName.TabIndex = 34;
-            // 
-            // txtUnit
-            // 
-            this.txtUnit.Enabled = false;
-            this.txtUnit.Location = new System.Drawing.Point(449, 93);
-            this.txtUnit.Name = "txtUnit";
-            this.txtUnit.Size = new System.Drawing.Size(103, 30);
-            this.txtUnit.TabIndex = 35;
-            // 
-            // txtInventory
-            // 
-            this.txtInventory.Enabled = false;
-            this.txtInventory.Location = new System.Drawing.Point(644, 93);
-            this.txtInventory.Name = "txtInventory";
-            this.txtInventory.Size = new System.Drawing.Size(87, 30);
-            this.txtInventory.TabIndex = 36;
-            // 
-            // txtQuantity
-            // 
-            this.txtQuantity.Enabled = false;
-            this.txtQuantity.Location = new System.Drawing.Point(882, 93);
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(87, 30);
-            this.txtQuantity.TabIndex = 37;
-            // 
             // txtPrice
             // 
             this.txtPrice.Enabled = false;
@@ -550,6 +508,53 @@ namespace BTL
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(87, 30);
             this.txtPrice.TabIndex = 38;
+            // 
+            // numQuantity
+            // 
+            this.numQuantity.Location = new System.Drawing.Point(882, 93);
+            this.numQuantity.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numQuantity.Name = "numQuantity";
+            this.numQuantity.Size = new System.Drawing.Size(87, 30);
+            this.numQuantity.TabIndex = 41;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Mã Nguyên Liệu";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Tên Nguyên Liệu";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Đơn Vị Tính";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Số Lượng";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Giá Tiền";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // ucXuatKho
             // 
@@ -564,6 +569,7 @@ namespace BTL
             this.groupDetail.ResumeLayout(false);
             this.groupDetail.PerformLayout();
             this.guna2GroupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numQuantity)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -581,25 +587,25 @@ namespace BTL
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private Guna.UI2.WinForms.Guna2Button btnSave;
         private Guna.UI2.WinForms.Guna2Button btnAdd;
         private Guna.UI2.WinForms.Guna2Button btnCancel;
         private Guna.UI2.WinForms.Guna2Button btnDelete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridView dgvProduct;
         private Guna.UI2.WinForms.Guna2GroupBox groupDetail;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbSupplier;
         private System.Windows.Forms.ComboBox cbId;
-        private System.Windows.Forms.TextBox txtPrice;
-        private System.Windows.Forms.TextBox txtQuantity;
         private System.Windows.Forms.TextBox txtInventory;
         private System.Windows.Forms.TextBox txtUnit;
         private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtPrice;
+        private System.Windows.Forms.NumericUpDown numQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }

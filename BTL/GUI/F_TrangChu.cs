@@ -50,6 +50,42 @@ namespace BTL
             list_img_active.Add("statistics-active.png");
         }
 
+        public void quyenNV()
+        {
+            fpnlSideBar.Controls.Remove(btnSideBarItem3);
+            fpnlSideBar.Controls.Remove(btnSideBarItem4);
+            fpnlSideBar.Controls.Remove(btnSideBarItem5);
+            fpnlSideBar.Controls.Remove(btnSideBarItem6);
+            fpnlSideBar.Controls.Remove(btnSideBarItem7);
+            fpnlSideBar.Controls.Remove(btnSideBarItem8);
+            fpnlSideBar.Controls.Remove(btnSideBarItem9);
+            fpnlSideBar.Controls.Remove(btnSideBarItem10);
+        }
+
+        public void quyenKho()
+        {
+            fpnlSideBar.Controls.Remove(btnSideBarItem2);
+            fpnlSideBar.Controls.Remove(btnSideBarItem3);
+            fpnlSideBar.Controls.Remove(btnSideBarItem4);
+            fpnlSideBar.Controls.Remove(btnSideBarItem5);
+            fpnlSideBar.Controls.Remove(btnSideBarItem6);
+            fpnlSideBar.Controls.Remove(btnSideBarItem11);
+        }
+
+        public void phanQuyen()
+        {
+            if(nv.chucvu != "Giám Đốc" && nv.chucvu != "Phó Giảm Đốc" && nv.chucvu != "Quản Lý")
+            {
+                if(nv.chucvu == "Nhân Viên Kho" || nv.chucvu == "Thủ Kho")
+                {
+                    quyenKho();
+                }
+                else
+                {
+                    quyenNV();
+                }
+            }
+        }
         private void btnSideBarItem1_Click(object sender, EventArgs e)
         {
             pnlView.Controls.Clear();
@@ -63,6 +99,7 @@ namespace BTL
                 .Select(i => (Guna2Button)fpnlSideBar.Controls["btnSideBarItem" + i.ToString()])
                 .ToList();
             //Add eventHandler for btnSideBarItem
+
             sideBarItems.ForEach(item =>
             {
                 item.Click -= new EventHandler(sideBarItemClicked);
@@ -80,6 +117,8 @@ namespace BTL
             tt.SetToolTip(btnExit, "Thoát");
             tt.SetToolTip(btnRestoreDown, "Phóng to");
             tt.SetToolTip(btnMinimize, "Thu nhỏ");
+
+            phanQuyen();
         }
         private void sideBarItemClicked(object sender, EventArgs e)
         {

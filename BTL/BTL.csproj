@@ -155,12 +155,6 @@
       <DependentUpon>Report.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="GUI\ThemMon.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\ThemMon.Designer.cs">
-      <DependentUpon>ThemMon.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\userControls\ucBan.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -172,18 +166,6 @@
     </Compile>
     <Compile Include="GUI\userControls\ucBanHang.Designer.cs">
       <DependentUpon>ucBanHang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\userControls\ucCardFood.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\userControls\ucCardFood.Designer.cs">
-      <DependentUpon>ucCardFood.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\userControls\ucKhoHang.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\userControls\ucKhoHang.Designer.cs">
-      <DependentUpon>ucKhoHang.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\userControls\ucNguyenLieu.cs">
       <SubType>UserControl</SubType>
@@ -258,6 +240,7 @@
     <EmbeddedResource Include="GUI\F_TrangChu.resx">
       <DependentUpon>F_TrangChu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\reports\BieuDo.rdlc" />
     <EmbeddedResource Include="GUI\reports\DT_CacNgayTrongThang.rdlc" />
     <EmbeddedResource Include="GUI\reports\HoaDon.rdlc" />
     <EmbeddedResource Include="GUI\NhapKho.resx">
@@ -273,20 +256,11 @@
     <EmbeddedResource Include="GUI\Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ThemMon.resx">
-      <DependentUpon>ThemMon.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\userControls\ucBan.resx">
       <DependentUpon>ucBan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\userControls\ucBanHang.resx">
       <DependentUpon>ucBanHang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\userControls\ucCardFood.resx">
-      <DependentUpon>ucCardFood.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\userControls\ucKhoHang.resx">
-      <DependentUpon>ucKhoHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\userControls\ucNguyenLieu.resx">
       <DependentUpon>ucNguyenLieu.cs</DependentUpon>
@@ -400,6 +374,7 @@
     <None Include="public\img\logo-3008.png" />
     <None Include="public\img\Prawn Seafood Logo Free Vector.jpg" />
     <None Include="public\img\265-2655827_seafood-logo.png" />
+    <None Include="public\img\9bff43d62685d3adde048684e80cb913.jpg" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -75,18 +75,12 @@ namespace BTL.DAO
             cnn.Close();
         }
 
-        public List<Ban> searchByStatus(int comboBoxIndex)
+        public List<Ban> searchByStatus(bool status)
         {
             List<Ban> result = new List<Ban>();
+            
             cnn.Open();
-            if (1 - comboBoxIndex <= 1 && 1 - comboBoxIndex >= 0)
-            {
-                scm = new SqlCommand("select * from ban where trangthai = " + (1 - comboBoxIndex), cnn);
-            }
-            else
-            {
-                scm = new SqlCommand("select * from ban", cnn);
-            }
+            scm = new SqlCommand($"select * from ban where trangthai = {(status == true ? 1 : 0)}", cnn);
             reader = scm.ExecuteReader();
             while (reader.Read())
             {

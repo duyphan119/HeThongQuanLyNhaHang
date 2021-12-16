@@ -1,10 +1,10 @@
 ﻿using BTL.DAO;
 using BTL.Model;
+using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
 
 namespace BTL
 {
@@ -24,6 +24,8 @@ namespace BTL
         {
             InitializeComponent();
             Dock = DockStyle.Fill;
+            table.Columns.Add("key", typeof(string));
+            table.Columns.Add("value", typeof(decimal));
         }
 
         public void thongKeHoaDon(DateTime start, DateTime end)
@@ -44,11 +46,6 @@ namespace BTL
             decimal total = dao_hd.getTotalPriceAll();
             totalOrder.Text = "Tổng số hoá đơn: " + dao_hd.getAll().Count;
             totalPrice.Text = "Tổng tiền bán được: " + (total == 0 ? "" + 0 : total.ToString("#,##")) + "đ";
-        }
-
-        public void export()
-        {
-            
         }
 
         public void displayOrder_DataGridView(List<HoaDon> list_order)
@@ -111,115 +108,96 @@ namespace BTL
             cbFilter.SelectedIndex = 0;
 
             thongKeChung();
+
+            tabControl1.Visible = true;
         }
 
         public void thongKeCacNgayTrongTuan(DateTime day)
         {
             List<DoanhThu> result = dao_dt.doanhThuCacNgayTrongTuan(day);
-            resetChart();
-            chart.Titles.Add($"Doanh Thu Các Ngày Trong Tuần");
             table.Rows.Clear();
-            table.Columns.Clear();
-            table.Columns.Add("Thứ", typeof(string));
-            table.Columns.Add("Năm", typeof(decimal));
             DoanhThu chunhat = result[0];
             result.RemoveAt(0);
             result.Add(chunhat);
             result.ForEach(item =>
             {
-                DataPoint point = new DataPoint();
                 if(item.time == 1)
                 {
-                    point.SetValueXY("Chủ Nhật", item.value);
-
+                    table.Rows.Add("Chủ nhật", item.value);
                 }
                 else
                 {
-                    point.SetValueXY("Thứ "+item.time, item.value);
-
+                    table.Rows.Add("Thứ " + item.time, item.value);
                 }
-                point.ToolTip = item.value.ToString("#,##");
-                chart.Series[0].Points.Add(point);
             });
+            loadStatistics("Doanh Thu Các Ngày Trong Tuần");
+        }
+
+        public void loadStatistics(string title)
+        {
+            rpvStatistics.LocalReport.ReportPath = "../../GUI/reports/BieuDo.rdlc";
+            ReportParameter rptTitle = new ReportParameter("title", title);
+            rpvStatistics.LocalReport.SetParameters(new ReportParameter[] { rptTitle });
+            ReportDataSource rds = new ReportDataSource();
+            rds.Name = "DataSet1";
+            rds.Value = table;
+            rpvStatistics.LocalReport.DataSources.Clear();
+            rpvStatistics.LocalReport.DataSources.Add(rds);
+            rpvStatistics.RefreshReport();
         }
 
         public void thongKeCacThangTrongNam(DateTime day)
         {
             List<DoanhThu> result = dao_dt.doanhThuCacThangTrongNam(day);
-            resetChart();
-            chart.Titles.Add($"Doanh Thu Các Tháng Trong Năm {day.Year}");
             table.Rows.Clear();
-            table.Columns.Clear();
-            table.Columns.Add("Tháng",typeof(string));
-            table.Columns.Add("Năm", typeof(decimal));
 
             result.ForEach(item =>
             {
-                DataPoint point = new DataPoint();
-                point.SetValueXY(item.time, item.value);
-                point.ToolTip = item.value.ToString("#,##");
-                chart.Series[0].Points.Add(point);
-                table.Rows.Add("T"+item.time, item.value);
+                table.Rows.Add(item.time, item.value);
             });
+            loadStatistics($"Doanh Thu Các Tháng Trong Năm {day.Year}");
         }
 
         public void thongKeCacQuyTrongNam(DateTime day)
         {
             List<DoanhThu> result = dao_dt.doanhThuCacQuyTrongNam(day);
-            resetChart();
-            chart.Titles.Add($"Doanh Thu Các Quý Trong Năm {day.Year}");
+            table.Rows.Clear();
             result.ForEach(item =>
             {
-                DataPoint point = new DataPoint();
-                point.SetValueXY(item.time, item.value);
-                point.ToolTip = item.value.ToString("#,##");
-                chart.Series[0].Points.Add(point);
+                table.Rows.Add("Quý " + item.time, item.value);
             });
+            loadStatistics($"Doanh Thu Các Quý Trong Năm {day.Year}");
         }
 
         public void thongKeCacNgayTrongThang(DateTime day)
         {
             List<DoanhThu> result = dao_dt.doanhThuCacNgayTrongThang(day);
-            resetChart();
-            chart.Titles.Add($"Doanh Thu Các Ngày Trong Tháng {day.Month}");
+            table.Rows.Clear();
             result.ForEach(item =>
             {
-                DataPoint point = new DataPoint();
-                point.SetValueXY(item.time, item.value);
-                point.ToolTip = item.value.ToString("#,##");
-                chart.Series[0].Points.Add(point);
+                table.Rows.Add(item.time, item.value);
             });
+            loadStatistics($"Doanh Thu Các Ngày Trong Tháng {day.Month}");
         }
 
         public void thongKeCacNamGanDay(int num)
         {
             List<DoanhThu> result = dao_dt.doanhThuCacNamGanDay(num);
-            resetChart();
-            chart.Titles.Add($"Doanh Thu {num} Năm Gần Đây");
+            table.Rows.Clear();
             result.ForEach(item =>
             {
-                DataPoint point = new DataPoint();
-                point.SetValueXY(item.time, item.value);
-                point.ToolTip = item.value.ToString("#,##");
-                chart.Series[0].Points.Add(point);
+                table.Rows.Add("Năm " + item.time, item.value);
             });
+            loadStatistics($"Doanh Thu {num} Năm Gần Đây");
         }
 
-        public void resetChart()
+        public void bieuDoThongKe(int index)
         {
-            chart.Titles.Clear();
-            chart.Series.Clear();
-            chart.Series.Add("Doanh Thu");
-        }
-
-        private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int index = cbFilter.SelectedIndex;
-            if(index == 0)
+            if (index == 0)
             {
                 thongKeCacNgayTrongTuan(dateTimeFilter.Value);
             }
-            else if(index == 1)
+            else if (index == 1)
             {
                 thongKeCacNgayTrongThang(dateTimeFilter.Value);
             }
@@ -237,9 +215,14 @@ namespace BTL
             }
         }
 
+        private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bieuDoThongKe(cbFilter.SelectedIndex);
+        }
+
         private void dateTimeFilter_ValueChanged(object sender, EventArgs e)
         {
-
+            bieuDoThongKe(cbFilter.SelectedIndex);
         }
 
         private void dateTimeStart1_ValueChanged(object sender, EventArgs e)

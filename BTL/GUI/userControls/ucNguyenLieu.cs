@@ -72,7 +72,7 @@ namespace BTL
         {
             txtName.Enabled = status;
             cbUnit.Enabled = status;
-            txtPrice.Enabled = status;
+            numPrice.Enabled = status;
             btnSave.Enabled = status;
         }
         public void setData(NguyenLieu ngl)
@@ -81,12 +81,13 @@ namespace BTL
             txtName.Text = ngl.ten;
             cbUnit.Text = ngl.dvt;
             txtInventory.Text = $"{dao_nl.getInventory(ngl.ma)}";
-            txtPrice.Text = "" + ngl.gia;
+            numPrice.Value = ngl.gia;
             cbId.Text = ngl.ma;
         }
         public void reset()
         {
-            txtName.Text = txtPrice.Text =  "";
+            txtName.Text = "";
+            numPrice.Value =  0;
             txtInventory.Text = "0";
         }
 
@@ -98,7 +99,7 @@ namespace BTL
         public NguyenLieu getData()
         {
             string error = "";
-            decimal price = 0;
+            decimal price = numPrice.Value;
             NhaCungCap nccp = ds_ncc.Find(ncc => ncc.ten == cbSupplier.Text);
             if (nccp == null)
             {
@@ -116,23 +117,11 @@ namespace BTL
             {
                 error += "Đơn vị tính không được để trống\n";
             }
-            if (txtPrice.Text == "")
+            if (price == 0)
             {
                 error += "Giá tiền không được để trống\n";
             }
-            else
-            {
-                try
-                {
-                    price = Convert.ToDecimal(txtPrice.Text);
-
-                }
-                catch(Exception ex)
-                {
-                    Console.WriteLine(ex);
-                    error += "Giá tiền không hợp lệ";
-                }
-            }
+            
             if (error == "")
             {
                 return new NguyenLieu(

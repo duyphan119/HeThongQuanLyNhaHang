@@ -73,6 +73,16 @@ namespace BTL.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _9bff43d62685d3adde048684e80cb913 {
+            get {
+                object obj = ResourceManager.GetObject("9bff43d62685d3adde048684e80cb913", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap add_to_invoice {
             get {
                 object obj = ResourceManager.GetObject("add-to-invoice", resourceCulture);

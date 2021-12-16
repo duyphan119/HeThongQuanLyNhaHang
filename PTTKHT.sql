@@ -10,8 +10,10 @@ create table nhanvien
 	diachi nvarchar(150) not null,
 	sdt varchar(11) not null,
 	chucvu nvarchar(30) not null,
-	matkhau varchar(100) not null,
+	matkhau varchar(100) not null
 );
+
+
 select * from phieuxuat
 insert into nhanvien(manv, tennv, ngaysinh, gioitinh, sdt, chucvu, matkhau, diachi) values
 ('210001', N'Phan Khánh Duy','1984-01-01', N'Nam', '0383254130', N'Giám Đốc', '123456', N'11 Lê Văn Việt, Tăng Nhơn Phú A, TP Thủ Đức, Thành phố Hồ Chí Minh'),
@@ -53,9 +55,10 @@ create table monan
 	giatien decimal not null,
 	dvt nvarchar(10) not null,
 	manhom varchar(10),
-	foreign key (manhom) references nhommon(manhom) on delete cascade
+	foreign key (manhom) 
+	references nhommon(manhom) on delete cascade
 );
-drop table monan
+
 insert into monan (mamon, tenmon, giatien, dvt, manhom) values
 ('P001', N'Gỏi cá mai', 250000, N'Dĩa', 'G01'),('P002', N'Gỏi sò huyết', 285000, N'Dĩa', 'G01'),
 ('P003', N'Gỏi sứa tôm thịt', 260000, N'Dĩa', 'G01'),('P004', N'Gỏi lươn', 230000, N'Dĩa', 'G01'),
@@ -216,29 +219,24 @@ create table chitietphieuxuat
 	foreign key (manl) references nguyenlieu(manl) on delete cascade
 );
 ----------------------------------------Stored Procedure------------------------------------------------------------------------------------------------------------------------
-
 --Danh sách món ăn của bàn
 create proc sp_DanhSachMonAnCuaBan
 (@soban int)
 as
 	begin
-		--Lấy ra danh sách món ăn
-		select hd.sohd, m.mamon, m.tenmon, cthd.soluong , m.dvt, m.giatien, (cthd.soluong * m.giatien) as 'thanhtien'
+		select hd.sohd, m.mamon, m.tenmon, cthd.soluong , 
+		m.dvt, m.giatien, (cthd.soluong * m.giatien) as 'thanhtien'
 		from hoadon hd, monan m, chitiethoadon cthd
-		where hd.sohd = cthd.sohd and m.mamon = cthd.mamon and hd.giora = hd.giovao and hd.soban = @soban
+		where hd.sohd = cthd.sohd and m.mamon = cthd.mamon and 
+		hd.giora = hd.giovao and hd.soban = @soban
 	end
---Thanh Toán
 create proc sp_ThanhToan
 (@sohd varchar(10), @giora datetime )
 as
 	begin
-		--Khai báo biến
 		declare @soban int;
-		--Gán giá trị
 		select @soban = soban from hoadon where sohd = @sohd;
-		--Cập nhật thời gian thanh toán của hoá đơn
 		update hoadon set giora = @giora where sohd = @sohd;
-		--Cập nhật trạng thái của bàn
 		update ban set trangthai = 1 where soban = @soban;
 	end
 
@@ -288,43 +286,46 @@ create proc sp_ThongKeSoLuongMonAnBanDuocTuNgayDenNgay
 (@tungay datetime, @denngay datetime)
 as
 	begin
-		select n.manhom, n.tennhom, m.mamon, m.tenmon, m.dvt, m.giatien , x.soluong
-		from monan m, nhommon n, (select c.mamon, sum(c.soluong) as 'soluong'
-									from hoadon h, chitiethoadon c
-									where
-										h.sohd = c.sohd and
-										h.giora between @tungay and @denngay and
-										h.giovao != h.giora
-									group by c.mamon ) as x
+		select n.manhom, n.tennhom, m.mamon, m.tenmon, 
+		m.dvt, m.giatien , x.soluong
+		from monan m, nhommon n, 
+			(select c.mamon, sum(c.soluong) as 'soluong'
+			from hoadon h, chitiethoadon c
+			where
+				h.sohd = c.sohd and
+				h.giora between @tungay and @denngay and
+				h.giovao != h.giora
+			group by c.mamon ) as x
 		where x.mamon = m.mamon and m.manhom = n.manhom
 		order by x.soluong desc
 	end
 
 --Lấy tồn kho của nguyên liệu
 create proc sp_TonKhoCuaNguyenLieu
-(@nguyenlieu int)
+(@nguyenlieu varchar(10))
 as 
 	begin
 		declare @soluongtrongphieunhap int;
 		declare @soluongtrongphieuxuat int;
 		declare @tonkho int;
-		--Lấy số lượng đã nhập
+
 		select @soluongtrongphieunhap = sum(soluong)
 		from chitietphieunhap ct
 		where manl = @nguyenlieu
 		group by manl
-		--Lấy số lượng đã xuất
+
 		select @soluongtrongphieuxuat = sum(soluong)
 		from chitietphieuxuat
 		where manl = @nguyenlieu
 		group by manl
-		--Nếu chưa xuất thì là null -> số lượng = 0
+
 		if(@soluongtrongphieuxuat is null)
 			begin
 				set @soluongtrongphieuxuat = 0
 			end
-		--Tồn kho là số lượng đã nhập - số lượng đã xuất
+
 		set @tonkho = @soluongtrongphieunhap - @soluongtrongphieuxuat;
+
 		if(@tonkho is null) 
 			begin
 				set @tonkho = 0
@@ -388,7 +389,8 @@ begin
 				set @doanhthuxet = 0
 			end
 
-			insert into @CacNgayTrongTuan(thu, doanhthu) values(DATEPART(dw,@ngayxet), @doanhthuxet);
+			insert into @CacNgayTrongTuan(thu, doanhthu) 
+			values(DATEPART(dw,@ngayxet), @doanhthuxet);
 
 			set @loop_before = @loop_before -1;
 
@@ -440,7 +442,8 @@ as
 	begin
 		select day(hd.giora) as 'ngay', sum(m.giatien * cthd.soluong) as 'doanhthu'
 		from hoadon hd, monan m, chitiethoadon cthd
-		where hd.sohd = cthd.sohd and m.mamon = cthd.mamon and hd.giovao != hd.giora and MONTH(hd.giora) = @thang and YEAR(hd.giora) = @nam
+		where hd.sohd = cthd.sohd and m.mamon = cthd.mamon and 
+		hd.giovao != hd.giora and MONTH(hd.giora) = @thang and YEAR(hd.giora) = @nam
 		group by day(hd.giora)
 	end
 
@@ -459,7 +462,8 @@ as
 			begin
 				select @doanhthu = sum(m.giatien * cthd.soluong)
 				from hoadon hd, monan m, chitiethoadon cthd
-				where hd.sohd = cthd.sohd and m.mamon = cthd.mamon and hd.giovao != hd.giora and month(hd.giora) = @thang and YEAR(hd.giora) = @nam
+				where hd.sohd = cthd.sohd and m.mamon = cthd.mamon and hd.giovao != hd.giora 
+				and month(hd.giora) = @thang and YEAR(hd.giora) = @nam
 				group by month(hd.giora)
 
 				if(@doanhthu is null)
@@ -492,7 +496,8 @@ as
 			begin
 				select @doanhthu = sum(m.giatien * cthd.soluong)
 				from hoadon hd, monan m, chitiethoadon cthd
-				where hd.sohd = cthd.sohd and m.mamon = cthd.mamon and hd.giovao != hd.giora and datepart(quarter,hd.giora) = @quy and YEAR(hd.giora) = @nam
+				where hd.sohd = cthd.sohd and m.mamon = cthd.mamon and hd.giovao != hd.giora 
+				and datepart(quarter,hd.giora) = @quy and YEAR(hd.giora) = @nam
 				group by datepart(quarter,hd.giora)
 
 				if(@doanhthu is null)
@@ -525,7 +530,8 @@ as
 
 				select @doanhthu = sum(m.giatien * cthd.soluong)
 				from hoadon hd, monan m, chitiethoadon cthd
-				where hd.sohd = cthd.sohd and hd.giovao != hd.giora and m.mamon = cthd.mamon and year(hd.giora) = @nam;
+				where hd.sohd = cthd.sohd and hd.giovao != hd.giora and 
+				m.mamon = cthd.mamon and year(hd.giora) = @nam;
 
 				if(@doanhthu is null)
 					begin
@@ -542,6 +548,37 @@ as
 		select * from @CacNamGanDay
 	end
 -------------------------------------TRIGGER---------------------------------------------------------------------------------------------------------
+create trigger tr_capNhatSoLuongCuaChiTietHoaDonKhiThemTrung
+on chitiethoadon
+instead of insert
+as
+begin
+	declare @sohd_i varchar(10);
+	declare @mamon_i varchar(10);
+	declare @soluong_i int;
+
+	select @mamon_i = mamon, @sohd_i = sohd, @soluong_i = soluong
+	from inserted
+	
+	if((select count(sohd) from chitiethoadon 
+	where sohd = @sohd_i and mamon = @mamon_i) = 1)
+		begin
+			declare @soluong_ct int;
+
+			select @soluong_ct = soluong
+			from chitiethoadon
+			where mamon = @mamon_i and sohd = @sohd_i
+
+			update chitiethoadon set soluong = @soluong_ct + @soluong_i 
+			where mamon = @mamon_i and sohd = @sohd_i
+		end
+	else
+		begin
+			insert into chitiethoadon(sohd, mamon, soluong)
+			values (@sohd_i, @mamon_i, @soluong_i)
+		end
+end
+
 create trigger tr_capNhatSoLuongNguyenLieuCuaChiTietPhieuNhapKhiThemTrung
 on chitietphieunhap
 for insert
@@ -597,3 +634,5 @@ begin
 			values (@sopx_i, @manl_i, @tongsoluong_ct)
 		end
 end
+
+

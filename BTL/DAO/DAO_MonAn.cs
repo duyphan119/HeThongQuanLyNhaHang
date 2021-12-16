@@ -73,6 +73,7 @@ namespace BTL.DAO
             cnn.Close();
             return result;
         }
+
         public MonAn getById(string id)
         {
             cnn.Open();

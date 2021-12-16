@@ -2,7 +2,6 @@
 using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace BTL
@@ -49,13 +48,14 @@ namespace BTL
         public void reset()
         {
             cbId.Text = txtName.Text = txtUnit.Text = txtPrice.Text = "";
-            txtQuantity.Text = txtInventory.Text = "0";
+            txtInventory.Text = "0";
+            numQuantity.Value = 0;
         }
 
         public void setEnabled(bool status)
         {
             cbId.Enabled = status;
-            txtQuantity.Enabled = status;
+            numQuantity.Enabled = status;
         }
         public void setData(string manl)
         {
@@ -64,7 +64,7 @@ namespace BTL
             cbSupplier.Text = nl.ncc.ten;
             txtName.Text = nl.ten;
             txtPrice.Text = nl.gia.ToString();
-            txtQuantity.Text = (ctp==null)?"0":$"{ctp.soluong}";
+            numQuantity.Value = (ctp==null)?0:ctp.soluong;
             txtInventory.Text = $"{dao_nl.getInventory(manl)}";
             txtUnit.Text = nl.dvt;
         }
@@ -164,7 +164,7 @@ namespace BTL
         private void btnSave_Click(object sender, EventArgs e)
         {
             NguyenLieu nl = getData();
-            int soluong = Convert.ToInt32(txtQuantity.Text);
+            int soluong = Convert.ToInt32(numQuantity.Value);
             if (action == ADD && soluong > 0)
             {
                 int tonkho = dao_nl.getInventory(nl.ma);
@@ -172,45 +172,48 @@ namespace BTL
                 {
                     if (soluong > tonkho)
                     {
-                        soluong = tonkho;
-                    }
-                    ChiTietPhieu ctp = new ChiTietPhieu(nl, soluong);
-
-                    //Thêm phiếu xuất
-                    if (phieu.list.Count == 0)
-                    {
-                        phieu = dao_p.insert(type, phieu, nv);
-                        ds_ph.Add(phieu);
-                    }
-                    int index = phieu.list.FindIndex(ct => ct.nl.ma == ctp.nl.ma);
-
-                    if (index == -1)
-                    {
-                        dao_ctp.insert(type, phieu.sophieu, ctp);
-                        phieu.list.Add(ctp);
+                        MessageDialog.Show("Số lượng xuất > tồn kho", "Lưu ý", MessageDialogButtons.OK, MessageDialogIcon.Error, MessageDialogStyle.Light);
                     }
                     else
                     {
-                        dao_ctp.updateOne(type, phieu.sophieu, ctp);
-                        phieu.list[index].soluong = ctp.soluong;
-                    }
-                    ds_ph[ds_ph.Count - 1] = phieu;
-                    if (action == ADD)
-                    {
-                        dgvProduct.Rows.Clear();
-                        phieu.list.ForEach(ct =>
+                        ChiTietPhieu ctp = new ChiTietPhieu(nl, soluong);
+
+                        //Thêm phiếu xuất
+                        if (phieu.list.Count == 0)
                         {
-                            dgvProduct.Rows.Add(new object[]
+                            phieu = dao_p.insert(type, phieu, nv);
+                            ds_ph.Add(phieu);
+                        }
+                        int index = phieu.list.FindIndex(ct => ct.nl.ma == ctp.nl.ma);
+
+                        if (index == -1)
+                        {
+                            dao_ctp.insert(type, phieu.sophieu, ctp);
+                            phieu.list.Add(ctp);
+                        }
+                        else
+                        {
+                            dao_ctp.updateOne(type, phieu.sophieu, ctp);
+                            phieu.list[index].soluong = ctp.soluong;
+                        }
+                        ds_ph[ds_ph.Count - 1] = phieu;
+                        if (action == ADD)
+                        {
+                            dgvProduct.Rows.Clear();
+                            phieu.list.ForEach(ct =>
                             {
+                                dgvProduct.Rows.Add(new object[]
+                                {
                                 ct.nl.ma, ct.nl.ten, ct.nl.dvt, ct.soluong, ct.nl.gia.ToString("#,##")
+                                });
                             });
-                        });
+                        }
+                        reset();
+                        btnDelete.Enabled = false;
+                        cbId.SelectedIndex = -1;
+                        btnSave.Enabled = false;
+                        dgvProduct.ClearSelection();
                     }
-                    reset();
-                    btnDelete.Enabled = false;
-                    cbId.SelectedIndex = -1;
-                    btnSave.Enabled = false;
-                    dgvProduct.ClearSelection();
                 }
                 else
                 {

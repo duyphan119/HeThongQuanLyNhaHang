@@ -54,7 +54,7 @@ namespace BTL
             cbGroup.Enabled = status;
             txtName.Enabled = status;
             cbUnit.Enabled = status;
-            txtPrice.Enabled = status;
+            numPrice.Enabled = status;
             btnSave.Enabled = status;
         }
 
@@ -64,7 +64,7 @@ namespace BTL
             cbId.Text = ""+mon.mamon;
             txtName.Text = mon.ten;
             cbUnit.Text = mon.dvt;
-            txtPrice.Text = ""+mon.gia;
+            numPrice.Value = mon.gia;
         }
 
         public MonAn getData()
@@ -73,7 +73,7 @@ namespace BTL
             string name = txtName.Text;
             string dvt = cbUnit.Text;
             NhomMon nhom = ds_nhom.Find(nh => nh.ten == cbGroup.Text);
-            decimal price = 0;
+            decimal price = numPrice.Value;
             if (nhom == null)
             {
                 error += "Nhóm thực đơn không hợp lệ.\n";
@@ -90,23 +90,10 @@ namespace BTL
             {
                 error += "Đơn vị tính không được bỏ trống.\n";
             }
-            if (txtPrice.Text == "")
+            if (price == 0)
             {
-                error += "Giá bán không được bỏ trống.\n";
+                error += "Giá bán phải lớn hơn 0.\n";
             }
-            else
-            {
-                try
-                {
-                    price = Convert.ToDecimal(txtPrice.Text);
-                }
-                catch (Exception ex)
-                {
-                    error += "Giá bán không hợp lệ.\n";
-                }
-            }
-
-            
 
             if(error == "")
             {
@@ -143,7 +130,7 @@ namespace BTL
         public void reset()
         {
             txtName.Text = "";
-            txtPrice.Text = "";
+            numPrice.Value = 0;
         }
 
         private void btnEdit_Click(object sender, EventArgs e)

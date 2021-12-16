@@ -67,10 +67,17 @@ namespace BTL.DAO
             scm.ExecuteNonQuery();
             cnn.Close();       
         }
-        public void deleteOne(string sohd)
+        public void deleteAll(string sohd)
         {
             cnn.Open();
             scm = new SqlCommand($"delete from chitiethoadon where sohd = '{sohd}'", cnn);
+            scm.ExecuteNonQuery();
+            cnn.Close();
+        }
+        public void deleteOne(string sohd, string mamon)
+        {
+            cnn.Open();
+            scm = new SqlCommand($"delete from chitiethoadon where sohd = '{sohd}' and mamon = '{mamon}'", cnn);
             scm.ExecuteNonQuery();
             cnn.Close();
         }

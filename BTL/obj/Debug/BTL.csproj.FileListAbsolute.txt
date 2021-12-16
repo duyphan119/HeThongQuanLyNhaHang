@@ -237,11 +237,8 @@ D:\Documents\DoAnPTTKHT\BTL\obj\Debug\BTL.F_TrangChu.resources
 D:\Documents\DoAnPTTKHT\BTL\obj\Debug\BTL.NhapKho.resources
 D:\Documents\DoAnPTTKHT\BTL\obj\Debug\BTL.Properties.Resources.resources
 D:\Documents\DoAnPTTKHT\BTL\obj\Debug\BTL.Report.resources
-D:\Documents\DoAnPTTKHT\BTL\obj\Debug\BTL.ThemMon.resources
 D:\Documents\DoAnPTTKHT\BTL\obj\Debug\BTL.ucBan.resources
 D:\Documents\DoAnPTTKHT\BTL\obj\Debug\BTL.ucBanHang.resources
-D:\Documents\DoAnPTTKHT\BTL\obj\Debug\BTL.ucCardFood.resources
-D:\Documents\DoAnPTTKHT\BTL\obj\Debug\BTL.ucKhoHang.resources
 D:\Documents\DoAnPTTKHT\BTL\obj\Debug\BTL.ucNguyenLieu.resources
 D:\Documents\DoAnPTTKHT\BTL\obj\Debug\BTL.ucNhaCungCap.resources
 D:\Documents\DoAnPTTKHT\BTL\obj\Debug\BTL.ucNhapKho.resources
