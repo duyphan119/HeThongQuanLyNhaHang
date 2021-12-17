@@ -64,6 +64,7 @@ namespace BTL
             rbtnMale.Enabled = status;
             cbPosition.Enabled = status;
             dateTime.Enabled = status;
+            textBox1.Enabled = status;
             btnSave.Enabled = status;
         }
 
@@ -95,6 +96,7 @@ namespace BTL
             txtName.Text = "";
             txtPhone.Text = "";
             txtAddress.Text = "";
+            textBox1.Text = "";
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -142,6 +144,7 @@ namespace BTL
             txtPhone.Text = nv.sdt;
             dateTime.Value = nv.ngaysinh;
             txtAddress.Text = nv.diachi;
+            textBox1.Text = nv.matkhau;
         }
 
         public NhanVien getData()
@@ -154,6 +157,7 @@ namespace BTL
             string diachi = txtAddress.Text;
             string chucvu = cbPosition.Text;
             string gioitinh = (rbtnMale.Checked == true) ? "Nam" : "Nữ";
+            string matkhau = textBox1.Text;
             if (manv == "")
             {
                 error += "Mã nhân viên không được để trống\n";
@@ -178,7 +182,11 @@ namespace BTL
             {
                 error += "Chức vụ không được bỏ trống\n";
             }
-            if(error == "")
+            if (matkhau == "")
+            {
+                error += "Mật khẩu không được bỏ trống\n";
+            }
+            if (error == "")
             {
                 NhanVien nv = new NhanVien(
                     manv, 
@@ -188,7 +196,7 @@ namespace BTL
                     diachi,
                     sdt,
                     chucvu,
-                    "123456"
+                    matkhau
                 );
                 return nv;
             }
@@ -216,7 +224,8 @@ namespace BTL
                 nv.gioitinh,
                 nv.diachi,
                 nv.sdt,
-                nv.chucvu
+                nv.chucvu,
+                nv.matkhau
             });
         }
         private void btnSave_Click(object sender, EventArgs e)
@@ -247,6 +256,7 @@ namespace BTL
                             dgvEmployee.Rows[i].Cells[4].Value = nv.diachi;
                             dgvEmployee.Rows[i].Cells[5].Value = nv.sdt;
                             dgvEmployee.Rows[i].Cells[6].Value = nv.chucvu;
+                            dgvEmployee.Rows[i].Cells[7].Value = nv.matkhau;
                             break;
                         }
                     }
