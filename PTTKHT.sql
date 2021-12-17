@@ -1,20 +1,611 @@
-﻿create database btl_pttkht;
-use btl_pttkht;
-
-create table nhanvien
+﻿USE [btl_pttkht]
+GO
+/****** Object:  Table [dbo].[ban]    Script Date: 12/17/2021 3:27:51 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ban](
+	[soban] [int] NOT NULL,
+	[trangthai] [bit] NOT NULL,
+PRIMARY KEY CLUSTERED 
 (
-	manv varchar(10) primary key,
-	tennv nvarchar(50) not null,
-	ngaysinh datetime not null,
-	gioitinh nvarchar(5) not null,
-	diachi nvarchar(150) not null,
-	sdt varchar(11) not null,
-	chucvu nvarchar(30) not null,
-	matkhau varchar(100) not null
-);
+	[soban] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[chitiethoadon]    Script Date: 12/17/2021 3:27:51 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[chitiethoadon](
+	[sohd] [varchar](10) NULL,
+	[mamon] [varchar](10) NULL,
+	[soluong] [int] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[chitietphieunhap]    Script Date: 12/17/2021 3:27:51 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[chitietphieunhap](
+	[sopn] [varchar](10) NULL,
+	[manl] [varchar](10) NULL,
+	[soluong] [int] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[chitietphieuxuat]    Script Date: 12/17/2021 3:27:51 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[chitietphieuxuat](
+	[sopx] [varchar](10) NULL,
+	[manl] [varchar](10) NULL,
+	[soluong] [int] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[hoadon]    Script Date: 12/17/2021 3:27:51 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[hoadon](
+	[sohd] [varchar](10) NOT NULL,
+	[giovao] [datetime] NULL,
+	[giora] [datetime] NULL,
+	[manv] [varchar](10) NULL,
+	[soban] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[sohd] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[monan]    Script Date: 12/17/2021 3:27:51 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[monan](
+	[mamon] [varchar](10) NOT NULL,
+	[tenmon] [nvarchar](50) NOT NULL,
+	[giatien] [decimal](18, 0) NOT NULL,
+	[dvt] [nvarchar](10) NOT NULL,
+	[manhom] [varchar](10) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[mamon] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[nguyenlieu]    Script Date: 12/17/2021 3:27:51 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[nguyenlieu](
+	[manl] [varchar](10) NOT NULL,
+	[tennl] [nvarchar](50) NOT NULL,
+	[giatien] [decimal](18, 0) NOT NULL,
+	[dvt] [nvarchar](10) NOT NULL,
+	[mancc] [varchar](10) NULL,
+ CONSTRAINT [PK__nguyenlieu] PRIMARY KEY CLUSTERED 
+(
+	[manl] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[nhacungcap]    Script Date: 12/17/2021 3:27:51 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[nhacungcap](
+	[mancc] [varchar](10) NOT NULL,
+	[tenncc] [nvarchar](100) NOT NULL,
+	[diachi] [nvarchar](100) NOT NULL,
+	[sdt] [varchar](11) NOT NULL,
+ CONSTRAINT [PK__nhacungcap] PRIMARY KEY CLUSTERED 
+(
+	[mancc] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[nhanvien]    Script Date: 12/17/2021 3:27:51 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[nhanvien](
+	[manv] [varchar](10) NOT NULL,
+	[tennv] [nvarchar](50) NOT NULL,
+	[ngaysinh] [datetime] NOT NULL,
+	[gioitinh] [nvarchar](5) NOT NULL,
+	[diachi] [nvarchar](150) NOT NULL,
+	[sdt] [varchar](11) NOT NULL,
+	[chucvu] [nvarchar](30) NOT NULL,
+	[matkhau] [varchar](100) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[manv] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[nhommon]    Script Date: 12/17/2021 3:27:51 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[nhommon](
+	[manhom] [varchar](10) NOT NULL,
+	[tennhom] [nvarchar](50) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[manhom] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[phieunhap]    Script Date: 12/17/2021 3:27:51 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[phieunhap](
+	[sopn] [varchar](10) NOT NULL,
+	[ngaynhap] [datetime] NOT NULL,
+	[manv] [varchar](10) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[sopn] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[phieuxuat]    Script Date: 12/17/2021 3:27:51 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[phieuxuat](
+	[sopx] [varchar](10) NOT NULL,
+	[ngayxuat] [datetime] NOT NULL,
+	[manv] [varchar](10) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[sopx] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[chitiethoadon]  WITH CHECK ADD FOREIGN KEY([mamon])
+REFERENCES [dbo].[monan] ([mamon])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[chitiethoadon]  WITH CHECK ADD FOREIGN KEY([sohd])
+REFERENCES [dbo].[hoadon] ([sohd])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[chitietphieunhap]  WITH CHECK ADD FOREIGN KEY([manl])
+REFERENCES [dbo].[nguyenlieu] ([manl])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[chitietphieunhap]  WITH CHECK ADD FOREIGN KEY([sopn])
+REFERENCES [dbo].[phieunhap] ([sopn])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[chitietphieuxuat]  WITH CHECK ADD FOREIGN KEY([manl])
+REFERENCES [dbo].[nguyenlieu] ([manl])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[chitietphieuxuat]  WITH CHECK ADD FOREIGN KEY([sopx])
+REFERENCES [dbo].[phieuxuat] ([sopx])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[hoadon]  WITH CHECK ADD FOREIGN KEY([manv])
+REFERENCES [dbo].[nhanvien] ([manv])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[hoadon]  WITH CHECK ADD FOREIGN KEY([soban])
+REFERENCES [dbo].[ban] ([soban])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[monan]  WITH CHECK ADD FOREIGN KEY([manhom])
+REFERENCES [dbo].[nhommon] ([manhom])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[nguyenlieu]  WITH CHECK ADD  CONSTRAINT [FK__nguyenlieu__mancc] FOREIGN KEY([mancc])
+REFERENCES [dbo].[nhacungcap] ([mancc])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[nguyenlieu] CHECK CONSTRAINT [FK__nguyenlieu__mancc]
+GO
+ALTER TABLE [dbo].[phieunhap]  WITH CHECK ADD FOREIGN KEY([manv])
+REFERENCES [dbo].[nhanvien] ([manv])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[phieuxuat]  WITH CHECK ADD FOREIGN KEY([manv])
+REFERENCES [dbo].[nhanvien] ([manv])
+ON DELETE CASCADE
+GO
+/****** Object:  StoredProcedure [dbo].[sp_DanhSachMonAnCuaBan]    Script Date: 12/17/2021 3:27:51 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[sp_DanhSachMonAnCuaBan]
+	(
+		@soban int
+	)
+	as
+		begin
+			--Lấy ra danh sách món ăn
+			select hd.sohd, m.mamon, m.tenmon, cthd.soluong , m.dvt, m.giatien, (cthd.soluong * m.giatien) as 'thanhtien'
+			from hoadon hd, monan m, chitiethoadon cthd
+			where hd.sohd = cthd.sohd and m.mamon = cthd.mamon and hd.giora = hd.giovao and hd.soban = @soban --Ngày là null : chưa thanh toán
+		end
+GO
+/****** Object:  StoredProcedure [dbo].[sp_datBan]    Script Date: 12/17/2021 3:27:51 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[sp_datBan] 
+(@sohd varchar(10), @soban int, @giodat datetime, @manv varchar(10))
+as
+	begin
+		declare @now datetime;
+		set @now = getdate();
+		update ban set trangthai = 0 where soban = @soban;
+		insert into hoadon(sohd, giovao,giora, soban, manv) 
+		values (@sohd, @giodat,@giodat,@soban, @manv); 
+	end
+GO
+/****** Object:  StoredProcedure [dbo].[sp_DoanhThuCacNamGanDay]    Script Date: 12/17/2021 3:27:51 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[sp_DoanhThuCacNamGanDay]
+(@count int)
+as
+	begin
+		declare @CacNamGanDay table (nam int, doanhthu decimal);
+		declare @nam int;
+		declare @doanhthu decimal;
+			
 
+		while @count > 0
+			begin
+				set @nam = YEAR(DATEADD(year, 1 - @count, CAST(GETDATE() AS date)));
 
-select * from phieuxuat
+				select @doanhthu = sum(m.giatien * cthd.soluong)
+				from hoadon hd, monan m, chitiethoadon cthd
+				where hd.sohd = cthd.sohd and hd.giovao != hd.giora and m.mamon = cthd.mamon and year(hd.giora) = @nam;
+
+				if(@doanhthu is null)
+					begin
+						insert into @CacNamGanDay(nam, doanhthu) values (@nam, 0);
+					end
+				else
+					begin
+						insert into @CacNamGanDay(nam, doanhthu) values (@nam, @doanhthu);
+					end
+
+				set @count = @count - 1;
+			end
+
+		select * from @CacNamGanDay
+	end
+GO
+/****** Object:  StoredProcedure [dbo].[sp_DoanhThuCacNgayTrongThang]    Script Date: 12/17/2021 3:27:51 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[sp_DoanhThuCacNgayTrongThang]
+(@thang int, @nam int)
+as
+	begin
+		select day(hd.giora) as 'ngay', sum(m.giatien * cthd.soluong) as 'doanhthu'
+		from hoadon hd, monan m, chitiethoadon cthd
+		where hd.sohd = cthd.sohd and m.mamon = cthd.mamon and hd.giovao != hd.giora and MONTH(hd.giora) = @thang and YEAR(hd.giora) = @nam
+		group by day(hd.giora)
+	end
+GO
+/****** Object:  StoredProcedure [dbo].[sp_DoanhThuCacNgayTrongTuan]    Script Date: 12/17/2021 3:27:51 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[sp_DoanhThuCacNgayTrongTuan]
+(@ngay datetime)
+as
+begin
+	declare @CacNgayTrongTuan table (thu int, doanhthu decimal);
+	declare @doanhthu decimal;
+	declare @loop_before int;
+	declare @loop_after int;
+		
+	--Lấy ra doanh thu của @ngay
+	select @doanhthu = sum(m.giatien * cthd.soluong)
+	from hoadon hd, monan m, chitiethoadon cthd
+	where 
+		hd.sohd = cthd.sohd and 
+		m.mamon = cthd.mamon and 
+		hd.giovao != hd.giora and 
+		DAY(hd.giora) = DAY(@ngay) and 
+		MONTH(hd.giora) = MONTH(@ngay) and 
+		YEAR(hd.giora) = YEAR(@ngay)
+
+	if(DATEPART(dw,@ngay) = 1)
+		begin
+			set @loop_before = 6;
+			set @loop_after = 0;
+		end
+	else
+		begin
+			set @loop_before = DATEPART(dw,@ngay) - 2;
+			set @loop_after = 7 - DATEPART(dw,@ngay) + 1;
+		end
+		
+
+	declare @ngayxet datetime;
+	set @ngayxet = @ngay
+	declare @doanhthuxet decimal;
+	while @loop_before != 0
+		begin
+			set @ngayxet = DATEADD(day, -1, CAST(@ngayxet AS date));
+
+				
+			select @doanhthuxet = sum(m.giatien * cthd.soluong)
+			from hoadon hd, monan m, chitiethoadon cthd
+			where 
+				hd.sohd = cthd.sohd and 
+				m.mamon = cthd.mamon and 
+				hd.giovao != hd.giora and 
+				DAY(hd.giora) = DAY(@ngayxet) and 
+				MONTH(hd.giora) = MONTH(@ngayxet) and 
+				YEAR(hd.giora) = YEAR(@ngayxet)
+
+			if(@doanhthuxet is null)
+			begin
+				set @doanhthuxet = 0
+			end
+
+			insert into @CacNgayTrongTuan(thu, doanhthu) values(DATEPART(dw,@ngayxet), @doanhthuxet);
+
+			set @loop_before = @loop_before -1;
+
+		end
+		
+		
+	if(@doanhthu is null)
+		begin
+			insert into @CacNgayTrongTuan(thu, doanhthu) values(DATEPART(dw,@ngay), 0);
+		end
+	else
+		begin
+			insert into @CacNgayTrongTuan(thu, doanhthu) values(DATEPART(dw,@ngay), @doanhthu);
+		end
+
+	set @ngayxet = @ngay
+	while @loop_after != 0
+		begin
+			set @ngayxet = DATEADD(day, 1, CAST(@ngayxet AS date));
+
+				
+			select @doanhthuxet = sum(m.giatien * cthd.soluong)
+			from hoadon hd, monan m, chitiethoadon cthd
+			where 
+				hd.sohd = cthd.sohd and 
+				m.mamon = cthd.mamon and 
+				hd.giovao != hd.giora and 
+				DAY(hd.giora) = DAY(@ngayxet) and 
+				MONTH(hd.giora) = MONTH(@ngayxet) and 
+				YEAR(hd.giora) = YEAR(@ngayxet)
+
+			if(@doanhthuxet is null)
+			begin
+				set @doanhthuxet = 0
+			end
+
+			insert into @CacNgayTrongTuan(thu, doanhthu) values(DATEPART(dw,@ngayxet), @doanhthuxet);
+
+			set @loop_after = @loop_after - 1;
+		end
+
+	select * from @CacNgayTrongTuan order by thu;
+end
+GO
+/****** Object:  StoredProcedure [dbo].[sp_DoanhThuCacQuyTrongNam]    Script Date: 12/17/2021 3:27:51 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[sp_DoanhThuCacQuyTrongNam]
+(@nam int)
+as
+	begin
+		declare @CacQuyTrongNam table (quy int, doanhthu decimal);
+		declare @quy int;
+		declare @doanhthu decimal;
+
+		set @quy = 1;
+
+		while @quy <= 4
+			begin
+				select @doanhthu = sum(m.giatien * cthd.soluong)
+				from hoadon hd, monan m, chitiethoadon cthd
+				where hd.sohd = cthd.sohd and m.mamon = cthd.mamon and hd.giovao != hd.giora and datepart(quarter,hd.giora) = @quy and YEAR(hd.giora) = @nam
+				group by datepart(quarter,hd.giora)
+
+				if(@doanhthu is null)
+					begin
+						insert into @CacQuyTrongNam(quy, doanhthu) values (@quy, 0);
+					end
+				else
+					begin
+						insert into @CacQuyTrongNam(quy, doanhthu) values (@quy, @doanhthu);
+					end
+
+				set @quy = @quy + 1;
+			end
+
+		select * from @CacQuyTrongNam
+	end
+GO
+/****** Object:  StoredProcedure [dbo].[sp_DoanhThuCacThangTrongNam]    Script Date: 12/17/2021 3:27:51 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[sp_DoanhThuCacThangTrongNam]
+(@nam int)
+as
+	begin
+		declare @CacThangTrongNam table (thang int, doanhthu decimal);
+		declare @thang int;
+		declare @doanhthu decimal;
+
+		set @thang = 1;
+
+		while @thang <= 12
+			begin
+				select @doanhthu = sum(m.giatien * cthd.soluong)
+				from hoadon hd, monan m, chitiethoadon cthd
+				where hd.sohd = cthd.sohd and m.mamon = cthd.mamon and hd.giovao != hd.giora and month(hd.giora) = @thang and YEAR(hd.giora) = @nam
+				group by month(hd.giora)
+
+				if(@doanhthu is null)
+					begin
+						insert into @CacThangTrongNam(thang, doanhthu) values (@thang, 0);
+					end
+				else
+					begin
+						insert into @CacThangTrongNam(thang, doanhthu) values (@thang, @doanhthu);
+					end
+
+				set @thang = @thang + 1;
+			end
+
+		select * from @CacThangTrongNam
+	end
+GO
+/****** Object:  StoredProcedure [dbo].[sp_DoanhThuTuNgayDenNgay]    Script Date: 12/17/2021 3:27:51 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[sp_DoanhThuTuNgayDenNgay] 
+(@tungay datetime, @denngay datetime )
+as
+	begin
+		--Khai báo biến
+		declare @doanhthu decimal
+		--Tính doanh thu
+		select @doanhthu = sum(m.giatien * cthd.soluong) 
+		from hoadon hd, monan m, chitiethoadon cthd
+		where hd.sohd = cthd.sohd and m.mamon = cthd.mamon and giora between @tungay and @denngay
+		--Trả về
+		select @doanhthu
+	end
+GO
+/****** Object:  StoredProcedure [dbo].[sp_ThanhToan]    Script Date: 12/17/2021 3:27:51 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[sp_ThanhToan]
+(@sohd varchar(10), @giora datetime )
+as
+	begin
+		--Khai báo biến
+		declare @soban int;
+		--Gán giá trị
+		select @soban = soban from hoadon where sohd = @sohd;
+		--Cập nhật thời gian thanh toán của hoá đơn
+		update hoadon set giora = @giora where sohd = @sohd;
+		--Cập nhật trạng thái của bàn
+		update ban set trangthai = 1 where soban = @soban;
+	end
+GO
+/****** Object:  StoredProcedure [dbo].[sp_ThongKeSoLuongMonAnBanDuocTuNgayDenNgay]    Script Date: 12/17/2021 3:27:51 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[sp_ThongKeSoLuongMonAnBanDuocTuNgayDenNgay]
+	(@tungay datetime, @denngay datetime)
+	as
+		begin
+			select n.manhom, n.tennhom, m.mamon, m.tenmon, m.dvt, m.giatien , x.soluong
+			from monan m, nhommon n, (select c.mamon, sum(c.soluong) as 'soluong'
+										from hoadon h, chitiethoadon c
+										where
+											h.sohd = c.sohd and
+											h.giora between @tungay and @denngay and
+											h.giovao != h.giora
+										group by c.mamon ) as x
+			where x.mamon = m.mamon and m.manhom = n.manhom
+			order by x.soluong desc
+		end
+GO
+/****** Object:  StoredProcedure [dbo].[sp_TinhTienCuaHoaDon]    Script Date: 12/17/2021 3:27:51 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[sp_TinhTienCuaHoaDon]
+(@sohd varchar(10))
+as
+	begin
+		declare @tongtien decimal
+		
+		select @tongtien = sum(m.giatien * cthd.soluong) 
+		from hoadon hd, monan m, chitiethoadon cthd
+		where hd.sohd = cthd.sohd and 
+			m.mamon = cthd.mamon and hd.sohd = @sohd
+		
+		select @tongtien
+	end
+GO
+/****** Object:  StoredProcedure [dbo].[sp_TonKhoCuaNguyenLieu]    Script Date: 12/17/2021 3:27:51 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[sp_TonKhoCuaNguyenLieu]
+(@nguyenlieu int)
+as 
+	begin
+		declare @soluongtrongphieunhap int;
+		declare @soluongtrongphieuxuat int;
+		declare @tonkho int;
+		--Lấy số lượng đã nhập
+		select @soluongtrongphieunhap = sum(soluong)
+		from chitietphieunhap ct
+		where manl = @nguyenlieu
+		group by manl
+		--Lấy số lượng đã xuất
+		select @soluongtrongphieuxuat = sum(soluong)
+		from chitietphieuxuat
+		where manl = @nguyenlieu
+		group by manl
+		--Nếu chưa xuất thì là null -> số lượng = 0
+		if(@soluongtrongphieuxuat is null)
+			begin
+				set @soluongtrongphieuxuat = 0
+			end
+		--Tồn kho là số lượng đã nhập - số lượng đã xuất
+		set @tonkho = @soluongtrongphieunhap - @soluongtrongphieuxuat;
+		if(@tonkho is null) 
+			begin
+				set @tonkho = 0
+			end
+		select @tonkho
+	end
+GO
 insert into nhanvien(manv, tennv, ngaysinh, gioitinh, sdt, chucvu, matkhau, diachi) values
 ('210001', N'Phan Khánh Duy','1984-01-01', N'Nam', '0383254130', N'Giám Đốc', '123456', N'11 Lê Văn Việt, Tăng Nhơn Phú A, TP Thủ Đức, Thành phố Hồ Chí Minh'),
 ('210002', N'Nguyễn Hữu An','1986-02-01', N'Nam', '0383254131', N'Phó Giám Đốc', '123456', N'21 Lê Văn Việt, Tăng Nhơn Phú A, TP Thủ Đức, Thành phố Hồ Chí Minh'),
@@ -33,13 +624,6 @@ insert into nhanvien(manv, tennv, ngaysinh, gioitinh, sdt, chucvu, matkhau, diac
 ('210015', N'Phan Thị Thanh','1997-07-22', N'Nữ', '0383254144', N'Nhân Viên Phục Vụ', '123456', N'151 Lê Văn Việt, Tăng Nhơn Phú A, TP Thủ Đức, Thành phố Hồ Chí Minh'),
 ('210016', N'Trần Văn Toàn','1993-11-06', N'Nam', '0383254145', N'Bảo vệ', '123456', N'161 Lê Văn Việt, Tăng Nhơn Phú A, TP Thủ Đức, Thành phố Hồ Chí Minh');
 
-
-create table nhommon
-(
-	manhom varchar(10) primary key,
-	tennhom nvarchar(50) not null
-);
-drop table nhommon
 insert into nhommon(manhom, tennhom) values
 ('G01', N'Gỏi'),('G02', N'Hàu'),(3, N'Vẹm'),(4, N'Sò Điệp'),(5, N'Sò Dương'),(6, N'Sò Huyết'),
 ('G07', N'Ốc'),(8, N'Ốc Vòi Voi'),(9, N'Nghêu'),(10, N'Nghêu Hai Cồi'),(11, N'Tôm Càng'),(12, N'Tôm Hùm'),
@@ -47,17 +631,6 @@ insert into nhommon(manhom, tennhom) values
 ('G19', N'Cua Hoàng Đế'),(20, N'Cua Hai Da'),(21, N'Cá'),(22, N'Mực'),(23, N'Các Loại Cuốn'),(24, N'Lươn'),
 ('G25', N'Xà Lách'),('G26', N'Các Loại Rau'),('G27', N'Súp'),(28, N'Cháo'),(29, N'Lẩu'),(30, N'Các Món Ăn Kèm'),
 ('G31', N'Cơm'),('G32', N'Mì');
-
-create table monan
-(
-	mamon varchar(10) primary key,
-	tenmon nvarchar(50) not null,
-	giatien decimal not null,
-	dvt nvarchar(10) not null,
-	manhom varchar(10),
-	foreign key (manhom) 
-	references nhommon(manhom) on delete cascade
-);
 
 insert into monan (mamon, tenmon, giatien, dvt, manhom) values
 ('P001', N'Gỏi cá mai', 250000, N'Dĩa', 'G01'),('P002', N'Gỏi sò huyết', 285000, N'Dĩa', 'G01'),
@@ -67,10 +640,10 @@ insert into monan (mamon, tenmon, giatien, dvt, manhom) values
 ('P009', N'Hàu nướng mở hành', 450000, N'Con', 'G02'),('P010', N'Hàu đút lò hạnh nhân', 45000, N'Con', 'G02'),
 ('P011', N'Vẹm hấp kiểu Pháp', 265000, N'Dĩa', 'G03'),('P012', N'Vẹm nướng mỡ hành', 265000, N'Dĩa', 'G03'),
 ('P013', N'Vẹm đút lò phô mai', 265000, N'Dĩa', 'G03'),('P014', N'Vẹm xào bơ', 265000, N'Dĩa', 'G03'),
-('P015', N'Sò điệp xào tỏi', 55000, N'Con', 'G04'),('P016', N'Sò điệp nướng mỡ hàng', 55000, N'Con', 'G04'),
+('P015', N'Sò điệp xào tỏi', 55000, N'Con', 'G04'),('P016', N'Sò điệp nướng mỡ hành', 55000, N'Con', 'G04'),
 ('P017', N'Sò điệp nướng sa tế', 55000, N'Con', 'G04'),('P018', N'Sò điệp đút lò phô mai', 55000, N'Con', 'G04'),
 ('P019', N'Sò điệp nướng', 55000, N'Con', 'G04'),('P020', N'Sò điệp xào bơ', 55000, N'Con', 'G04'),
-('P021', N'Sò dương xào bơ', 95000, N'Con', 'G05'),('P022', N'Sò dương nướng mỡ hàng', 95000, N'Con', 'G05'),
+('P021', N'Sò dương xào bơ', 95000, N'Con', 'G05'),('P022', N'Sò dương nướng mỡ hành', 95000, N'Con', 'G05'),
 ('P023', N'Sò dương đút lò phô mai', 95000, N'Con', 'G05'),('P024', N'Sò huyết nướng', 240000, N'Dĩa', 'G06'),
 ('P025', N'Sò huyết rang tiêu', 260000, N'Dĩa', 'G06'),('P026', N'Sò huyết rang me', 260000, N'Dĩa', 'G06'),
 ('P027', N'Sò huyết Tứ Xuyên', 260000, N'Dĩa', 'G06'),('P028', N'Ốc hương nướng', 570000, N'Dĩa', 'G07'),
@@ -135,504 +708,3 @@ insert into monan (mamon, tenmon, giatien, dvt, manhom) values
 ('P145', N'Cơm tay cầm bò', 255000, N'Thố', 'G31'),('P146', N'Cơm cháy hải sản', 275000, N'Thố', 'G31'),
 ('P147', N'Mì xào thập cẩm', 250000, N'Dĩa', 'G32'),('P148', N'Bún gạo xào thập cẩm', 250000, N'Dĩa', 'G32'),
 ('P149', N'Miến xào thịt cua', 320000, N'Thố', 'G32'),('P150', N'Miến xào cua con', 95000, N'100g', 'G32');
-
-create table ban
-(
-	soban int primary key,
-	trangthai bit not null
-);
-
-insert into ban(soban, trangthai) values
-(1,1),(2,1),(3,1),(4,1),(5,0),(6,1),(7,1),(8,1),(9,1),
-(10,1),(11,1),(12,1),(13,1),(14,1),(15,1),(16,1),(17,1),(18,1),
-(19,1),(20,1),(21,1),(22,1),(23,1),(24,1),(25,1),(26,1),(27,1);
-
-create table hoadon
-(
-	sohd varchar(10) primary key,
-	giovao datetime,
-	giora datetime,
-	manv varchar(10),
-	soban int,
-	foreign key (manv) references nhanvien(manv) on delete cascade,
-	foreign key (soban) references ban(soban) on delete cascade
-);
-
-create table chitiethoadon
-(
-	sohd varchar(10),
-	mamon varchar(10),
-	soluong int,
-	foreign key (sohd) references hoadon(sohd) on delete cascade,
-	foreign key (mamon) references monan(mamon) on delete cascade,
-);
-
-create table nhacungcap
-(
-	mancc varchar(10) primary key,
-	tenncc nvarchar(100) not null,
-	diachi nvarchar(100) not null,
-	sdt varchar(11) not null
-);
-
-create table nguyenlieu
-(
-	manl varchar(10) primary key,
-	tennl nvarchar(50) not null,
-	giatien decimal not null,
-	dvt nvarchar(10) not null,
-	mancc varchar(10),
-	foreign key (mancc) references nhacungcap(mancc) on delete cascade
-);
-
-create table phieunhap
-(
-	sopn varchar(10) primary key,
-	ngaynhap datetime not null,
-	manv varchar(10),
-	foreign key (manv) references nhanvien(manv) on delete cascade
-);
-
-
-create table chitietphieunhap
-(
-	sopn varchar(10),
-	manl varchar(10),
-	soluong int,
-	foreign key (sopn) references phieunhap(sopn) on delete cascade,
-	foreign key (manl) references nguyenlieu(manl) on delete cascade
-);
-
-create table phieuxuat
-(
-	sopx varchar(10) primary key,
-	ngayxuat datetime not null,
-	manv varchar(10),
-	foreign key (manv) references nhanvien(manv) on delete cascade
-);
-create table chitietphieuxuat
-(
-	sopx varchar(10),
-	manl varchar(10),
-	soluong int,
-	foreign key (sopx) references phieuxuat(sopx) on delete cascade,
-	foreign key (manl) references nguyenlieu(manl) on delete cascade
-);
-----------------------------------------Stored Procedure------------------------------------------------------------------------------------------------------------------------
---Danh sách món ăn của bàn
-create proc sp_DanhSachMonAnCuaBan
-(@soban int)
-as
-	begin
-		select hd.sohd, m.mamon, m.tenmon, cthd.soluong , 
-		m.dvt, m.giatien, (cthd.soluong * m.giatien) as 'thanhtien'
-		from hoadon hd, monan m, chitiethoadon cthd
-		where hd.sohd = cthd.sohd and m.mamon = cthd.mamon and 
-		hd.giora = hd.giovao and hd.soban = @soban
-	end
-create proc sp_ThanhToan
-(@sohd varchar(10), @giora datetime )
-as
-	begin
-		declare @soban int;
-		select @soban = soban from hoadon where sohd = @sohd;
-		update hoadon set giora = @giora where sohd = @sohd;
-		update ban set trangthai = 1 where soban = @soban;
-	end
-
-create proc sp_datBan 
-(@sohd varchar(10), @soban int, @giodat datetime, @manv varchar(10))
-as
-	begin
-		declare @now datetime;
-		set @now = getdate();
-		update ban set trangthai = 0 where soban = @soban;
-		insert into hoadon(sohd, giovao,giora, soban, manv) 
-		values (@sohd, @giodat,@giodat,@soban, @manv); 
-	end
-
---Doanh thu từ ngày đến ngày 
-create proc sp_DoanhThuTuNgayDenNgay 
-(@tungay datetime, @denngay datetime )
-as
-	begin
-		--Khai báo biến
-		declare @doanhthu decimal
-		--Tính doanh thu
-		select @doanhthu = sum(m.giatien * cthd.soluong) 
-		from hoadon hd, monan m, chitiethoadon cthd
-		where hd.sohd = cthd.sohd and m.mamon = cthd.mamon and giora between @tungay and @denngay
-		--Trả về
-		select @doanhthu
-	end
-
---Tính tổng tiền của 1 hoá đơn
-create proc sp_TinhTienCuaHoaDon
-(@sohd varchar(10))
-as
-	begin
-		declare @tongtien decimal
-		
-		select @tongtien = sum(m.giatien * cthd.soluong) 
-		from hoadon hd, monan m, chitiethoadon cthd
-		where hd.sohd = cthd.sohd and 
-			m.mamon = cthd.mamon and hd.sohd = @sohd
-		
-		select @tongtien
-	end
-
---Lấy ra số lượng bán được của từng món ăn từ ngày đến ngày
-create proc sp_ThongKeSoLuongMonAnBanDuocTuNgayDenNgay
-(@tungay datetime, @denngay datetime)
-as
-	begin
-		select n.manhom, n.tennhom, m.mamon, m.tenmon, 
-		m.dvt, m.giatien , x.soluong
-		from monan m, nhommon n, 
-			(select c.mamon, sum(c.soluong) as 'soluong'
-			from hoadon h, chitiethoadon c
-			where
-				h.sohd = c.sohd and
-				h.giora between @tungay and @denngay and
-				h.giovao != h.giora
-			group by c.mamon ) as x
-		where x.mamon = m.mamon and m.manhom = n.manhom
-		order by x.soluong desc
-	end
-
---Lấy tồn kho của nguyên liệu
-create proc sp_TonKhoCuaNguyenLieu
-(@nguyenlieu varchar(10))
-as 
-	begin
-		declare @soluongtrongphieunhap int;
-		declare @soluongtrongphieuxuat int;
-		declare @tonkho int;
-
-		select @soluongtrongphieunhap = sum(soluong)
-		from chitietphieunhap ct
-		where manl = @nguyenlieu
-		group by manl
-
-		select @soluongtrongphieuxuat = sum(soluong)
-		from chitietphieuxuat
-		where manl = @nguyenlieu
-		group by manl
-
-		if(@soluongtrongphieuxuat is null)
-			begin
-				set @soluongtrongphieuxuat = 0
-			end
-
-		set @tonkho = @soluongtrongphieunhap - @soluongtrongphieuxuat;
-
-		if(@tonkho is null) 
-			begin
-				set @tonkho = 0
-			end
-		select @tonkho
-	end
-
---Doanh thu các ngày trong tuần
-create proc sp_DoanhThuCacNgayTrongTuan
-(@ngay datetime)
-as
-begin
-	declare @CacNgayTrongTuan table (thu int, doanhthu decimal);
-	declare @doanhthu decimal;
-	declare @loop_before int;
-	declare @loop_after int;
-		
-	--Lấy ra doanh thu của @ngay
-	select @doanhthu = sum(m.giatien * cthd.soluong)
-	from hoadon hd, monan m, chitiethoadon cthd
-	where 
-		hd.sohd = cthd.sohd and 
-		m.mamon = cthd.mamon and 
-		hd.giovao != hd.giora and 
-		DAY(hd.giora) = DAY(@ngay) and 
-		MONTH(hd.giora) = MONTH(@ngay) and 
-		YEAR(hd.giora) = YEAR(@ngay)
-
-	if(DATEPART(dw,@ngay) = 1)
-		begin
-			set @loop_before = 6;
-			set @loop_after = 0;
-		end
-	else
-		begin
-			set @loop_before = DATEPART(dw,@ngay) - 2;
-			set @loop_after = 7 - DATEPART(dw,@ngay) + 1;
-		end
-		
-
-	declare @ngayxet datetime;
-	set @ngayxet = @ngay
-	declare @doanhthuxet decimal;
-	while @loop_before != 0
-		begin
-			set @ngayxet = DATEADD(day, -1, CAST(@ngayxet AS date));
-
-				
-			select @doanhthuxet = sum(m.giatien * cthd.soluong)
-			from hoadon hd, monan m, chitiethoadon cthd
-			where 
-				hd.sohd = cthd.sohd and 
-				m.mamon = cthd.mamon and 
-				hd.giovao != hd.giora and 
-				DAY(hd.giora) = DAY(@ngayxet) and 
-				MONTH(hd.giora) = MONTH(@ngayxet) and 
-				YEAR(hd.giora) = YEAR(@ngayxet)
-
-			if(@doanhthuxet is null)
-			begin
-				set @doanhthuxet = 0
-			end
-
-			insert into @CacNgayTrongTuan(thu, doanhthu) 
-			values(DATEPART(dw,@ngayxet), @doanhthuxet);
-
-			set @loop_before = @loop_before -1;
-
-		end
-		
-		
-	if(@doanhthu is null)
-		begin
-			insert into @CacNgayTrongTuan(thu, doanhthu) values(DATEPART(dw,@ngay), 0);
-		end
-	else
-		begin
-			insert into @CacNgayTrongTuan(thu, doanhthu) values(DATEPART(dw,@ngay), @doanhthu);
-		end
-
-	set @ngayxet = @ngay
-	while @loop_after != 0
-		begin
-			set @ngayxet = DATEADD(day, 1, CAST(@ngayxet AS date));
-
-				
-			select @doanhthuxet = sum(m.giatien * cthd.soluong)
-			from hoadon hd, monan m, chitiethoadon cthd
-			where 
-				hd.sohd = cthd.sohd and 
-				m.mamon = cthd.mamon and 
-				hd.giovao != hd.giora and 
-				DAY(hd.giora) = DAY(@ngayxet) and 
-				MONTH(hd.giora) = MONTH(@ngayxet) and 
-				YEAR(hd.giora) = YEAR(@ngayxet)
-
-			if(@doanhthuxet is null)
-			begin
-				set @doanhthuxet = 0
-			end
-
-			insert into @CacNgayTrongTuan(thu, doanhthu) values(DATEPART(dw,@ngayxet), @doanhthuxet);
-
-			set @loop_after = @loop_after - 1;
-		end
-
-	select * from @CacNgayTrongTuan order by thu;
-end
-
---Doanh thu các ngày trong tháng
-create proc sp_DoanhThuCacNgayTrongThang
-(@thang int, @nam int)
-as
-	begin
-		select day(hd.giora) as 'ngay', sum(m.giatien * cthd.soluong) as 'doanhthu'
-		from hoadon hd, monan m, chitiethoadon cthd
-		where hd.sohd = cthd.sohd and m.mamon = cthd.mamon and 
-		hd.giovao != hd.giora and MONTH(hd.giora) = @thang and YEAR(hd.giora) = @nam
-		group by day(hd.giora)
-	end
-
---Doanh thu các tháng trong năm
-create proc sp_DoanhThuCacThangTrongNam
-(@nam int)
-as
-	begin
-		declare @CacThangTrongNam table (thang int, doanhthu decimal);
-		declare @thang int;
-		declare @doanhthu decimal;
-
-		set @thang = 1;
-
-		while @thang <= 12
-			begin
-				select @doanhthu = sum(m.giatien * cthd.soluong)
-				from hoadon hd, monan m, chitiethoadon cthd
-				where hd.sohd = cthd.sohd and m.mamon = cthd.mamon and hd.giovao != hd.giora 
-				and month(hd.giora) = @thang and YEAR(hd.giora) = @nam
-				group by month(hd.giora)
-
-				if(@doanhthu is null)
-					begin
-						insert into @CacThangTrongNam(thang, doanhthu) values (@thang, 0);
-					end
-				else
-					begin
-						insert into @CacThangTrongNam(thang, doanhthu) values (@thang, @doanhthu);
-					end
-
-				set @thang = @thang + 1;
-			end
-
-		select * from @CacThangTrongNam
-	end
-
---Doanh thu các quý trong năm
-create proc sp_DoanhThuCacQuyTrongNam
-(@nam int)
-as
-	begin
-		declare @CacQuyTrongNam table (quy int, doanhthu decimal);
-		declare @quy int;
-		declare @doanhthu decimal;
-
-		set @quy = 1;
-
-		while @quy <= 4
-			begin
-				select @doanhthu = sum(m.giatien * cthd.soluong)
-				from hoadon hd, monan m, chitiethoadon cthd
-				where hd.sohd = cthd.sohd and m.mamon = cthd.mamon and hd.giovao != hd.giora 
-				and datepart(quarter,hd.giora) = @quy and YEAR(hd.giora) = @nam
-				group by datepart(quarter,hd.giora)
-
-				if(@doanhthu is null)
-					begin
-						insert into @CacQuyTrongNam(quy, doanhthu) values (@quy, 0);
-					end
-				else
-					begin
-						insert into @CacQuyTrongNam(quy, doanhthu) values (@quy, @doanhthu);
-					end
-
-				set @quy = @quy + 1;
-			end
-
-		select * from @CacQuyTrongNam
-	end
---Doanh thu các năm gần đây
-create proc sp_DoanhThuCacNamGanDay
-(@count int)
-as
-	begin
-		declare @CacNamGanDay table (nam int, doanhthu decimal);
-		declare @nam int;
-		declare @doanhthu decimal;
-			
-
-		while @count > 0
-			begin
-				set @nam = YEAR(DATEADD(year, 1 - @count, CAST(GETDATE() AS date)));
-
-				select @doanhthu = sum(m.giatien * cthd.soluong)
-				from hoadon hd, monan m, chitiethoadon cthd
-				where hd.sohd = cthd.sohd and hd.giovao != hd.giora and 
-				m.mamon = cthd.mamon and year(hd.giora) = @nam;
-
-				if(@doanhthu is null)
-					begin
-						insert into @CacNamGanDay(nam, doanhthu) values (@nam, 0);
-					end
-				else
-					begin
-						insert into @CacNamGanDay(nam, doanhthu) values (@nam, @doanhthu);
-					end
-
-				set @count = @count - 1;
-			end
-
-		select * from @CacNamGanDay
-	end
--------------------------------------TRIGGER---------------------------------------------------------------------------------------------------------
-create trigger tr_capNhatSoLuongCuaChiTietHoaDonKhiThemTrung
-on chitiethoadon
-instead of insert
-as
-begin
-	declare @sohd_i varchar(10);
-	declare @mamon_i varchar(10);
-	declare @soluong_i int;
-
-	select @mamon_i = mamon, @sohd_i = sohd, @soluong_i = soluong
-	from inserted
-	
-	if((select count(sohd) from chitiethoadon 
-	where sohd = @sohd_i and mamon = @mamon_i) = 1)
-		begin
-			declare @soluong_ct int;
-
-			select @soluong_ct = soluong
-			from chitiethoadon
-			where mamon = @mamon_i and sohd = @sohd_i
-
-			update chitiethoadon set soluong = @soluong_ct + @soluong_i 
-			where mamon = @mamon_i and sohd = @sohd_i
-		end
-	else
-		begin
-			insert into chitiethoadon(sohd, mamon, soluong)
-			values (@sohd_i, @mamon_i, @soluong_i)
-		end
-end
-
-create trigger tr_capNhatSoLuongNguyenLieuCuaChiTietPhieuNhapKhiThemTrung
-on chitietphieunhap
-for insert
-as
-begin
-	declare @manl_i varchar(10);
-	declare @sopn_i varchar(10);
-
-	select @manl_i = manl, @sopn_i = sopn
-	from inserted
-
-	
-
-	if((select count(sopn) from chitietphieunhap where sopn = @sopn_i and manl = @manl_i) > 1)
-		begin
-			declare @tongsoluong_ct int;
-
-			select @tongsoluong_ct = sum(soluong)
-			from chitietphieunhap
-			where manl = @manl_i and sopn = @sopn_i
-			group by manl, sopn
-
-			delete from chitietphieunhap where manl = @manl_i and sopn = @sopn_i
-
-			insert into chitietphieunhap(sopn, manl, soluong)
-			values (@sopn_i, @manl_i, @tongsoluong_ct)
-		end
-end
-
-create trigger tr_capNhatSoLuongNguyenLieuCuaChiTietPhieuXuatKhiThemTrung
-on chitietphieuxuat
-for insert
-as
-begin
-	declare @manl_i varchar(10);
-	declare @sopx_i varchar(10);
-
-	select @manl_i = manl, @sopx_i = sopx
-	from inserted
-
-	if((select count(sopx) from chitietphieuxuat where sopx = @sopx_i and manl = @manl_i) > 1)
-		begin
-			declare @tongsoluong_ct int;
-
-			select @tongsoluong_ct = sum(soluong)
-			from chitietphieuxuat
-			where manl = @manl_i and sopx = @sopx_i
-			group by manl, sopx
-
-			delete from chitietphieuxuat where manl = @manl_i and sopx = @sopx_i
-
-			insert into chitietphieuxuat(sopx, manl, soluong)
-			values (@sopx_i, @manl_i, @tongsoluong_ct)
-		end
-end
-
-
